@@ -16,6 +16,7 @@
 
 package com.ivianuu.rxmaterialdialogscommons.color;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.ArrayRes;
 import android.support.annotation.ColorInt;
@@ -26,6 +27,7 @@ import android.support.annotation.StringRes;
 
 import com.afollestad.materialdialogs.Theme;
 import com.afollestad.materialdialogs.util.DialogUtils;
+import com.ivianuu.rxmaterialdialogscommons.R;
 
 import io.reactivex.Maybe;
 
@@ -66,9 +68,16 @@ public class ColorChooserDialogBuilder {
     boolean allowUserCustomAlpha = true;
     boolean setPreselectionColor = false;
 
+    @SuppressLint("PrivateResource")
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
     public ColorChooserDialogBuilder(@NonNull Context context) {
         this.context = context;
+
+        // default button texts
+        doneButton(R.string.md_done_label);
+        cancelButton(R.string.md_cancel_label);
+        backButton(R.string.md_back_label);
+        customButton(R.string.md_custom_label);
     }
     
     public ColorChooserDialogBuilder title(@StringRes int titleRes) {
