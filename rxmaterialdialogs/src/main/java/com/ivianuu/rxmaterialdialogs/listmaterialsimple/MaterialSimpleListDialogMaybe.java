@@ -59,7 +59,7 @@ class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialog
             @Override
             public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
                 if (!e.isDisposed()) {
-                    e.onSuccess(new MaterialSimpleListDialogEvent(dialog, DialogAction.POSITIVE, index, item));
+                    e.onSuccess(new MaterialSimpleListDialogEvent(dialog, index, item));
                     e.onComplete();
                 }
             }

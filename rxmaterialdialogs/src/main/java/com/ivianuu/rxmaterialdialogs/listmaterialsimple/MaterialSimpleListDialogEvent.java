@@ -17,28 +17,27 @@
 package com.ivianuu.rxmaterialdialogs.listmaterialsimple;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
+import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
 import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogEvent;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Represents a material simple list event
  */
-public class MaterialSimpleListDialogEvent extends SingleButtonDialogEvent {
+public class MaterialSimpleListDialogEvent extends DialogEvent {
 
     private int index;
     private MaterialSimpleListItem item;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
     public MaterialSimpleListDialogEvent(@NonNull MaterialDialog dialog,
-                                         @NonNull DialogAction which,
                                          int index,
-                                         @Nullable MaterialSimpleListItem item) {
-        super(dialog, which);
+                                         @NonNull MaterialSimpleListItem item) {
+        super(dialog);
         this.index = index;
         this.item = item;
     }
@@ -53,16 +52,9 @@ public class MaterialSimpleListDialogEvent extends SingleButtonDialogEvent {
     /**
      * Returns the item of this event
      */
-    @Nullable
+    @NonNull
     public MaterialSimpleListItem getItem() {
         return item;
     }
 
-    /**
-     * Returns if the item is present
-     */
-
-    public boolean hasItem() {
-        return item != null;
-    }
 }
