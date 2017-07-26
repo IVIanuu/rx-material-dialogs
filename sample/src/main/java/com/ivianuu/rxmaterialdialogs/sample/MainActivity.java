@@ -56,12 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 .negativeText("HEhe")
                 .addItems(items)
                 .build()
-                .filter(new Predicate<MaterialSimpleListDialogEvent>() {
-                    @Override
-                    public boolean test(MaterialSimpleListDialogEvent materialSimpleListDialogEvent) throws Exception {
-                        return materialSimpleListDialogEvent.hasItem();
-                    }
-                })
                 .subscribe(new Consumer<MaterialSimpleListDialogEvent>() {
                     @Override
                     public void accept(MaterialSimpleListDialogEvent materialSimpleListDialogEvent) throws Exception {
@@ -147,12 +141,6 @@ public class MainActivity extends AppCompatActivity {
                                 .build();
                     }
                 })
-                .filter(new Predicate<InputDialogEvent>() {
-                    @Override
-                    public boolean test(InputDialogEvent inputDialogEvent) throws Exception {
-                        return inputDialogEvent.hasInput();
-                    }
-                })
                 .map(new Function<InputDialogEvent, CharSequence>() {
                     @Override
                     public CharSequence apply(InputDialogEvent inputDialogEvent) throws Exception {
@@ -168,12 +156,6 @@ public class MainActivity extends AppCompatActivity {
                                 .positiveText("OK")
                                 .negativeText("CANCEL")
                                 .build()
-                                .filter(new Predicate<InputDialogEvent>() {
-                                    @Override
-                                    public boolean test(InputDialogEvent inputDialogEvent) throws Exception {
-                                        return inputDialogEvent.hasInput();
-                                    }
-                                })
                                 .map(new Function<InputDialogEvent, Pair<CharSequence, CharSequence>>() {
                                     @Override
                                     public Pair<CharSequence, CharSequence> apply(InputDialogEvent passwordEvent) throws Exception {
