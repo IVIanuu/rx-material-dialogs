@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogs.listmaterialsimple;
+package com.ivianuu.rxmaterialdialogscommons.listmaterialsimple;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

@@ -14,40 +14,31 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogs.base;
+package com.ivianuu.rxmaterialdialogscommons.color;
 
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-
-import io.reactivex.disposables.Disposable;
+import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
 
 /**
- * Dismisses the dialog on dispose
+ * Represents color chooser dialog event
  */
-@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
-public final class DialogDisposable implements Disposable {
+public class ColorChooserDialogEvent extends DialogEvent {
 
-    private MaterialDialog dialog;
-    private boolean disposed;
+    private int selectedColor;
 
-    public DialogDisposable(@NonNull MaterialDialog dialog) {
-        this.dialog = dialog;
+    public ColorChooserDialogEvent(@NonNull MaterialDialog dialog, @ColorInt int selectedColor) {
+        super(dialog);
+        this.selectedColor = selectedColor;
     }
 
-    @Override
-    public void dispose() {
-        if (!disposed) {
-            disposed = true;
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
-        }
-    }
-
-    @Override
-    public boolean isDisposed() {
-        return disposed;
+    /**
+     * Returns the selected color of this event
+     */
+    @ColorInt
+    public int getSelectedColor() {
+        return selectedColor;
     }
 }

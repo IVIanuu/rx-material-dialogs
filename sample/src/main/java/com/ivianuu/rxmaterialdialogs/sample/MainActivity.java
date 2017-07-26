@@ -12,8 +12,11 @@ import com.ivianuu.rxmaterialdialogs.input.InputDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listmultichoice.MultiChoiceListDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogEvent;
-import com.ivianuu.rxmaterialdialogs.listmaterialsimple.MaterialSimpleListDialogEvent;
+
 import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogEvent;
+import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
+import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogEvent;
+import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +36,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        login();
+
+        RxMaterialDialogsCommons.colorChooserDialogBuilder(this)
+                .title("Color chooser")
+                .allowUserColorInput(true)
+                .allowUserColorInputAlpha(true)
+                .doneButton(R.string.md_done_label)
+                .cancelButton(R.string.md_cancel_label)
+                .backButton(R.string.md_back_label)
+                .customButton(R.string.md_custom_label)
+                .dynamicButtonColor(true)
+                .build()
+                .subscribe(new Consumer<ColorChooserDialogEvent>() {
+                    @Override
+                    public void accept(ColorChooserDialogEvent colorChooserDialogEvent) throws Exception {
+                        Toast.makeText(MainActivity.this, "Color selected " + colorChooserDialogEvent.getSelectedColor(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void simpleMaterialList() {
@@ -51,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             count++;
         }
 
-        disposable = RxMaterialDialogs.materialSimpleListDialog
+        disposable = RxMaterialDialogsCommons.materialSimpleListDialog
                 (this)
                 .negativeText("HEhe")
                 .addItems(items)

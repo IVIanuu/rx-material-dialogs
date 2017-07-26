@@ -20,7 +20,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ivianuu.rxmaterialdialogs.input.InputDialogBuilder;
-import com.ivianuu.rxmaterialdialogs.listmaterialsimple.MaterialSimpleListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listmultichoice.MultiChoiceListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogBuilder;
@@ -29,10 +28,6 @@ import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogBuilder;
 // TODO: 26.07.2017  Add checkbox
 // TODO: 26.07.2017  Add progressbar
 // TODO: 26.07.2017  Add custom view
-
-// TODO: 26.07.2017  Add Color
-// TODO: 26.07.2017  Add file selector
-// TODO: 26.07.2017  Add folder selector
 
 /**
  * Class to access the builders
@@ -46,6 +41,7 @@ public final class RxMaterialDialogs {
     /**
      * Returns a builder for a input dialog
      */
+    @NonNull
     public static InputDialogBuilder inputDialog(@NonNull Context context) {
         return new InputDialogBuilder(context);
     }
@@ -53,6 +49,7 @@ public final class RxMaterialDialogs {
     /**
      * Returns a builder for a single button dialog
      */
+    @NonNull
     public static SingleButtonDialogBuilder singleButtonDialog(@NonNull Context context) {
         return new SingleButtonDialogBuilder(context);
     }
@@ -60,6 +57,7 @@ public final class RxMaterialDialogs {
     /**
      * Returns a builder for a simple list dialog
      */
+    @NonNull
     public static SimpleListDialogBuilder simpleListDialog(@NonNull Context context) {
         return new SimpleListDialogBuilder(context);
     }
@@ -67,6 +65,7 @@ public final class RxMaterialDialogs {
     /**
      * Returns a builder for a single choice list dialog
      */
+    @NonNull
     public static SingleChoiceListDialogBuilder singleChoiceListDialog(@NonNull Context context) {
         return new SingleChoiceListDialogBuilder(context);
     }
@@ -74,15 +73,9 @@ public final class RxMaterialDialogs {
     /**
      * Returns a builder for a multi choice list dialog
      */
+    @NonNull
     public static MultiChoiceListDialogBuilder multiChoiceListDialog(@NonNull Context context) {
         return new MultiChoiceListDialogBuilder(context);
-    }
-
-    /**
-     * Returns a new material simple list dialog
-     */
-    public static MaterialSimpleListDialogBuilder materialSimpleListDialog(@NonNull Context context) {
-        return new MaterialSimpleListDialogBuilder(context);
     }
 
 }

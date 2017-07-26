@@ -7,6 +7,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
+
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
@@ -27,9 +28,10 @@ android {
 dependencies {
     // Material Dialogs
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+    compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
 
-    // RxJava
-    compile "io.reactivex.rxjava2:rxjava:2.1.1"
+    // RxMaterialDialogs
+    implementation project(':rxmaterialdialogs')
 
     // Compile libs
     implementation fileTree(dir: 'libs', include: ['*.jar'])

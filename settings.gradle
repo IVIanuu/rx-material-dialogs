@@ -1,1 +1,1 @@
-include ':sample', ':rxmaterialdialogs'
+include ':sample', ':rxmaterialdialogs', ':rxmaterialdialogs-commons'

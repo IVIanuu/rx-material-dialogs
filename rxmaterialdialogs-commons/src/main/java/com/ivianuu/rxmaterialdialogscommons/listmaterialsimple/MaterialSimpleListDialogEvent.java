@@ -14,16 +14,14 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogs.listmaterialsimple;
+package com.ivianuu.rxmaterialdialogscommons.listmaterialsimple;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
 import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
-import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogEvent;
 
 /**
  * Represents a material simple list event
