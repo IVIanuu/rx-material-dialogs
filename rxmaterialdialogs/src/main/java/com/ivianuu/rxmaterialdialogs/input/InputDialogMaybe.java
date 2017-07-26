@@ -66,7 +66,7 @@ class InputDialogMaybe extends DialogMaybe<InputDialogEvent> {
                 .onAny(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (!e.isDisposed())  {
+                        if (which != DialogAction.POSITIVE && !e.isDisposed())  {
                             e.onComplete();
                         }
                     }

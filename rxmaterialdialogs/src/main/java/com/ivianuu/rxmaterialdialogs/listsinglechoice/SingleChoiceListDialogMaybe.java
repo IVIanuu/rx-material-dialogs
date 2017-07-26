@@ -58,7 +58,7 @@ class SingleChoiceListDialogMaybe extends DialogMaybe<SingleChoiceListDialogEven
                 .onAny(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (!e.isDisposed()) {
+                        if (which != DialogAction.POSITIVE && !e.isDisposed()) {
                             e.onComplete();
                         }
                     }
