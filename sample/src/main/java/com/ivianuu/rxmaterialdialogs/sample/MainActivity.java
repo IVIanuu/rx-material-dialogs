@@ -33,7 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        login();
+    }
 
+    private void simpleMaterialList() {
         List<MaterialSimpleListItem> items = new ArrayList<>();
         int count = 0;
         while (count < 100) {
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             count++;
         }
 
-        RxMaterialDialogs.materialSimpleListDialog
+        disposable = RxMaterialDialogs.materialSimpleListDialog
                 (this)
                 .negativeText("HEhe")
                 .addItems(items)
@@ -144,20 +147,16 @@ public class MainActivity extends AppCompatActivity {
                                 .build();
                     }
                 })
-                .flatMap(new Function<InputDialogEvent, MaybeSource<CharSequence>>() {
+                .filter(new Predicate<InputDialogEvent>() {
                     @Override
-                    public MaybeSource<CharSequence> apply(final InputDialogEvent inputDialogEvent) throws Exception {
-                        return RxMaterialDialogs.singleButtonDialog(MainActivity.this)
-                                .title("Great!")
-                                .content("Your username is " + inputDialogEvent.getInput() + " you have to type in your password now")
-                                .positiveText("OK")
-                                .build()
-                                .map(new Function<SingleButtonDialogEvent, CharSequence>() {
-                                    @Override
-                                    public CharSequence apply(SingleButtonDialogEvent singleButtonDialogEvent) throws Exception {
-                                        return inputDialogEvent.getInput();
-                                    }
-                                });
+                    public boolean test(InputDialogEvent inputDialogEvent) throws Exception {
+                        return inputDialogEvent.hasInput();
+                    }
+                })
+                .map(new Function<InputDialogEvent, CharSequence>() {
+                    @Override
+                    public CharSequence apply(InputDialogEvent inputDialogEvent) throws Exception {
+                        return inputDialogEvent.getInput();
                     }
                 })
                 .flatMap(new Function<CharSequence, MaybeSource<Pair<CharSequence, CharSequence>>>() {
@@ -169,6 +168,12 @@ public class MainActivity extends AppCompatActivity {
                                 .positiveText("OK")
                                 .negativeText("CANCEL")
                                 .build()
+                                .filter(new Predicate<InputDialogEvent>() {
+                                    @Override
+                                    public boolean test(InputDialogEvent inputDialogEvent) throws Exception {
+                                        return inputDialogEvent.hasInput();
+                                    }
+                                })
                                 .map(new Function<InputDialogEvent, Pair<CharSequence, CharSequence>>() {
                                     @Override
                                     public Pair<CharSequence, CharSequence> apply(InputDialogEvent passwordEvent) throws Exception {
