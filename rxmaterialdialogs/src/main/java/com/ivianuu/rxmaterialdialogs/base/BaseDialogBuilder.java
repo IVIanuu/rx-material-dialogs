@@ -39,12 +39,12 @@ import com.afollestad.materialdialogs.Theme;
 /**
  * BaseDialogBuilder
  */
-@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 public class BaseDialogBuilder<T extends BaseDialogBuilder> {
 
     protected MaterialDialog.Builder wrappedBuilder;
     protected T thisBuilder;
 
+    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
     public BaseDialogBuilder(@NonNull Context context) {
         wrappedBuilder = new MaterialDialog.Builder(context);
     }
