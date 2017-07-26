@@ -31,7 +31,7 @@ public class InputDialogEvent extends DialogEvent {
     private CharSequence input;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
-    public InputDialogEvent(@NonNull MaterialDialog dialog, @Nullable CharSequence input) {
+    public InputDialogEvent(@NonNull MaterialDialog dialog, @NonNull CharSequence input) {
         super(dialog);
         this.input = input;
     }
@@ -42,12 +42,5 @@ public class InputDialogEvent extends DialogEvent {
     @Nullable
     public CharSequence getInput() {
         return input;
-    }
-
-    /**
-     * Returns if this event has a valid input
-     */
-    public boolean hasInput() {
-        return input != null;
     }
 }
