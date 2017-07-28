@@ -78,6 +78,7 @@ public class ColorChooserDialogBuilder {
         cancelButton(R.string.md_cancel_label);
         backButton(R.string.md_back_label);
         customButton(R.string.md_custom_label);
+        presetsButton(R.string.md_presets_label);
     }
     
     public ColorChooserDialogBuilder title(@StringRes int titleRes) {

@@ -24,6 +24,8 @@ import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleLis
 
 // TODO: 26.07.2017  Add file selector
 // TODO: 26.07.2017  Add folder selector
+// TODO: 26.07.2017 billing dialog
+// TODO: 26.07.2017 changelog dialog 
 
 /**
  * @author Manuel Wrage (IVIanuu)
@@ -38,7 +40,7 @@ public final class RxMaterialDialogsCommons {
      * Returns a new color chooser dialog
      */
     @NonNull
-    public static ColorChooserDialogBuilder colorChooserDialogBuilder(@NonNull Context context) {
+    public static ColorChooserDialogBuilder colorChooserDialog(@NonNull Context context) {
         return new ColorChooserDialogBuilder(context);
     }
 

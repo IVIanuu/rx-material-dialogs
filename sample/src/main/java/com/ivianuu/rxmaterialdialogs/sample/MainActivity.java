@@ -1,5 +1,6 @@
 package com.ivianuu.rxmaterialdialogs.sample;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Pair;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RxMaterialDialogsCommons.colorChooserDialogBuilder(this)
+        RxMaterialDialogsCommons.colorChooserDialog(this)
                 .title("Color chooser")
                 .allowUserColorInput(true)
                 .allowUserColorInputAlpha(true)
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 .backButton(R.string.md_back_label)
                 .customButton(R.string.md_custom_label)
                 .dynamicButtonColor(true)
+                .preselect(Color.BLACK)
                 .build()
                 .subscribe(new Consumer<ColorChooserDialogEvent>() {
                     @Override

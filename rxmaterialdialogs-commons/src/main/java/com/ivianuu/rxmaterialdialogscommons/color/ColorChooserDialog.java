@@ -216,18 +216,15 @@ final class ColorChooserDialog implements View.OnClickListener, View.OnLongClick
 
     private void generateColors() {
         if (builder.colorsTop != null) {
-            Log.d("testtt", "colors top not null");
             colorsTop = builder.colorsTop;
             colorsSub = builder.colorsSub;
             return;
         }
 
         if (builder.accentMode) {
-            Log.d("testtt", "is accent mode");
             colorsTop = ColorPalette.ACCENT_COLORS;
             colorsSub = ColorPalette.ACCENT_COLORS_SUB;
         } else {
-            Log.d("testtt", "is not accent mode");
             colorsTop = ColorPalette.PRIMARY_COLORS;
             colorsSub = ColorPalette.PRIMARY_COLORS_SUB;
         }
