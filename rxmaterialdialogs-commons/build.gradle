@@ -7,21 +7,11 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 }
 
@@ -32,16 +22,6 @@ dependencies {
 
     // RxMaterialDialogs
     implementation project(':rxmaterialdialogs')
-
-    // Compile libs
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    // Test
-    testImplementation 'junit:junit:4.12'
-
-    // Android Test
-    androidTestImplementation 'com.android.support.test:runner:0.5'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
 }
 
 // build a jar with source files

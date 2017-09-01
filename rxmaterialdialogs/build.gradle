@@ -12,15 +12,6 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 }
 
@@ -29,17 +20,7 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 
     // RxJava
-    compile "io.reactivex.rxjava2:rxjava:2.1.1"
-
-    // Compile libs
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    // Test
-    testImplementation 'junit:junit:4.12'
-
-    // Android Test
-    androidTestImplementation 'com.android.support.test:runner:0.5'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+    compile "io.reactivex.rxjava2:rxjava:2.1.2"
 }
 
 // build a jar with source files
