@@ -17,6 +17,7 @@
 package com.ivianuu.rxmaterialdialogs.listsinglechoice;
 
 import android.content.Context;
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
@@ -42,6 +43,7 @@ public class SingleChoiceListDialogBuilder extends BaseListDialogBuilder<SingleC
         return this;
     }
 
+    @CheckResult @NonNull
     public Maybe<SingleChoiceListDialogEvent> build() {
         return SingleChoiceListDialogMaybe.create(wrappedBuilder, selectedIndex);
     }

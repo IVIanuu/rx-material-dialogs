@@ -17,6 +17,7 @@
 package com.ivianuu.rxmaterialdialogs.listmultichoice;
 
 import android.content.Context;
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
@@ -43,7 +44,7 @@ public class MultiChoiceListDialogBuilder extends BaseListDialogBuilder<MultiCho
         return this;
     }
 
-    @NonNull
+    @CheckResult @NonNull
     public Maybe<MultiChoiceListDialogEvent> build() {
         return MultiChoiceListDialogMaybe.create(wrappedBuilder, selectedIndices);
     }

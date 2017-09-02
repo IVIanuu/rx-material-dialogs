@@ -17,6 +17,7 @@
 package com.ivianuu.rxmaterialdialogs.listsimple;
 
 import android.content.Context;
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
@@ -35,7 +36,7 @@ public class SimpleListDialogBuilder extends BaseListDialogBuilder<SimpleListDia
         setThisBuilder(this);
     }
 
-    @NonNull
+    @CheckResult @NonNull
     public Maybe<SimpleListDialogEvent> build() {
         return SimpleListDialogMaybe.create(wrappedBuilder);
     }

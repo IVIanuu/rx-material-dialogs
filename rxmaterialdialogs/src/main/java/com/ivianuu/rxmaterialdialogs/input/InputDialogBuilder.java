@@ -17,6 +17,7 @@
 package com.ivianuu.rxmaterialdialogs.input;
 
 import android.content.Context;
+import android.support.annotation.CheckResult;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.IntRange;
@@ -103,7 +104,7 @@ public class InputDialogBuilder extends BaseDialogBuilder<InputDialogBuilder> {
         return this;
     }
 
-    @NonNull
+    @CheckResult @NonNull
     public Maybe<InputDialogEvent> build() {
         return InputDialogMaybe.create(wrappedBuilder, hint, prefill, allowEmptyInput);
     }

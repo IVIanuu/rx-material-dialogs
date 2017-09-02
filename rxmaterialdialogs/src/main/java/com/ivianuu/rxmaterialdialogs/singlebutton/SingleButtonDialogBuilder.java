@@ -17,6 +17,7 @@
 package com.ivianuu.rxmaterialdialogs.singlebutton;
 
 import android.content.Context;
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
@@ -25,7 +26,7 @@ import com.ivianuu.rxmaterialdialogs.base.BaseDialogBuilder;
 import io.reactivex.Maybe;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Single button dialog builder
  */
 public class SingleButtonDialogBuilder extends BaseDialogBuilder<SingleButtonDialogBuilder> {
 
@@ -35,7 +36,7 @@ public class SingleButtonDialogBuilder extends BaseDialogBuilder<SingleButtonDia
         setThisBuilder(this);
     }
 
-    @NonNull
+    @CheckResult @NonNull
     public Maybe<SingleButtonDialogEvent> build() {
         return SingleButtonDialogMaybe.create(wrappedBuilder);
     }

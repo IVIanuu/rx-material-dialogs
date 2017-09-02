@@ -19,6 +19,7 @@ package com.ivianuu.rxmaterialdialogscommons.color;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.ArrayRes;
+import android.support.annotation.CheckResult;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -198,6 +199,7 @@ public class ColorChooserDialogBuilder {
         return this;
     }
 
+    @CheckResult @NonNull
     public Maybe<ColorChooserDialogEvent> build() {
         return ColorChooserDialogMaybe.create(this);
     }

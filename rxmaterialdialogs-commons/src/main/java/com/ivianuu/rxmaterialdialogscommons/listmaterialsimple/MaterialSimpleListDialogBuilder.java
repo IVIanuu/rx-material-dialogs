@@ -17,6 +17,7 @@
 package com.ivianuu.rxmaterialdialogscommons.listmaterialsimple;
 
 import android.content.Context;
+import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 import android.support.v7.widget.RecyclerView;
@@ -64,7 +65,7 @@ public class MaterialSimpleListDialogBuilder extends BaseDialogBuilder<MaterialS
         return this;
     }
 
-    @NonNull
+    @CheckResult @NonNull
     public Maybe<MaterialSimpleListDialogEvent> build() {
         return MaterialSimpleListDialogMaybe.create(wrappedBuilder, items, layoutManager);
     }
