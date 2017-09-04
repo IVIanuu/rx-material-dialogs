@@ -20,6 +20,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogBuilder;
+import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogBuilder;
 
 // TODO: 26.07.2017  Add file selector
@@ -50,5 +51,13 @@ public final class RxMaterialDialogsCommons {
     @NonNull
     public static MaterialSimpleListDialogBuilder materialSimpleListDialog(@NonNull Context context) {
         return new MaterialSimpleListDialogBuilder(context);
+    }
+
+    /**
+     * Returns a new material list dialog
+     */
+    @NonNull
+    public static MaterialListDialogBuilder materialListDialog(@NonNull Context context) {
+        return new MaterialListDialogBuilder(context);
     }
 }

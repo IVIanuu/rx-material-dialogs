@@ -17,6 +17,8 @@ import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogEven
 import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogEvent;
+import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListDialogEvent;
+import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListItem;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogEvent;
 
 import java.util.ArrayList;
@@ -38,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        materialList();
+    }
+
+    private void colorChooserDialog() {
         RxMaterialDialogsCommons.colorChooserDialog(this)
                 .title("Color chooser")
                 .allowUserColorInput(true)
@@ -82,6 +88,36 @@ public class MainActivity extends AppCompatActivity {
                     public void accept(MaterialSimpleListDialogEvent materialSimpleListDialogEvent) throws Exception {
                         //noinspection ConstantConditions
                         Toast.makeText(MainActivity.this, materialSimpleListDialogEvent.getItem().getContent() + " clicked", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void materialList() {
+        List<MaterialListItem> items = new ArrayList<>();
+        int count = 0;
+        while (count < 100) {
+            MaterialListItem item = new MaterialListItem.Builder(this)
+                    .id(count)
+                    .title("Hallo " + (count + 1))
+                    .text("text...mflkwmflkamwwflkmawlkfmlkamflkawmflkmflkMWFKLMAWLKMLKMFLKMLlkamlmfamlfamfalmwalmafw")
+                    .icon(R.mipmap.ic_launcher)
+                    .backgroundColor(Color.TRANSPARENT)
+                    .build();
+
+            items.add(item);
+
+            count++;
+        }
+
+        disposable = RxMaterialDialogsCommons.materialListDialog(this)
+                .negativeText("HEhe")
+                .addItems(items)
+                .build()
+                .subscribe(new Consumer<MaterialListDialogEvent>() {
+                    @Override
+                    public void accept(MaterialListDialogEvent materialListDialogEvent) throws Exception {
+                        //noinspection ConstantConditions
+                        Toast.makeText(MainActivity.this, materialListDialogEvent.getItem().getTitle() + " clicked", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
