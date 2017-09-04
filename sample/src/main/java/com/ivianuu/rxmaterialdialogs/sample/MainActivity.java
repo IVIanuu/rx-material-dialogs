@@ -113,11 +113,22 @@ public class MainActivity extends AppCompatActivity {
                 .negativeText("HEhe")
                 .addItems(items)
                 .build()
-                .subscribe(new Consumer<MaterialListDialogEvent>() {
+                .map(new Function<MaterialListDialogEvent, MaterialListItem>() {
                     @Override
-                    public void accept(MaterialListDialogEvent materialListDialogEvent) throws Exception {
-                        //noinspection ConstantConditions
-                        Toast.makeText(MainActivity.this, materialListDialogEvent.getItem().getTitle() + " clicked", Toast.LENGTH_SHORT).show();
+                    public MaterialListItem apply(MaterialListDialogEvent materialListDialogEvent) throws Exception {
+                        return materialListDialogEvent.getItem();
+                    }
+                })
+                .map(new Function<MaterialListItem, CharSequence>() {
+                    @Override
+                    public CharSequence apply(MaterialListItem materialListItem) throws Exception {
+                        return materialListItem.getTitle();
+                    }
+                })
+                .subscribe(new Consumer<CharSequence>() {
+                    @Override
+                    public void accept(CharSequence s) throws Exception {
+                        Toast.makeText(MainActivity.this, s + " clicked", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

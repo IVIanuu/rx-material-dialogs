@@ -29,7 +29,7 @@ import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleLis
 // TODO: 26.07.2017 changelog dialog 
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Material dialog commons
  */
 public final class RxMaterialDialogsCommons {
 
