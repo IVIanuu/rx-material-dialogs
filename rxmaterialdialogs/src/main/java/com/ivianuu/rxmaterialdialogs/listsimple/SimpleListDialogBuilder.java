@@ -30,7 +30,7 @@ import io.reactivex.Maybe;
  */
 public class SimpleListDialogBuilder extends BaseListDialogBuilder<SimpleListDialogBuilder> {
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SimpleListDialogBuilder(@NonNull Context context) {
         super(context);
         setThisBuilder(this);

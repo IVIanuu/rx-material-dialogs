@@ -30,7 +30,7 @@ public class MaterialListDialogEvent extends DialogEvent {
     private int index;
     private MaterialListItem item;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public MaterialListDialogEvent(@NonNull MaterialDialog dialog,
                                          int index,
                                          @NonNull MaterialListItem item) {

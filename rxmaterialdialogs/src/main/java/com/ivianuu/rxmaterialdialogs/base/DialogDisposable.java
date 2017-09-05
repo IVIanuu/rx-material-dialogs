@@ -26,7 +26,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * Dismisses the dialog on dispose
  */
-@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public final class DialogDisposable implements Disposable {
 
     private MaterialDialog dialog;

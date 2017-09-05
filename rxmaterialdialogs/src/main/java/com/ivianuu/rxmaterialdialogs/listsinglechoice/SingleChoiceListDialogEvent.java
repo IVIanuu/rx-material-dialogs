@@ -32,7 +32,7 @@ public class SingleChoiceListDialogEvent extends DialogEvent {
     private int which;
     private CharSequence text;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SingleChoiceListDialogEvent(@NonNull MaterialDialog dialog,
                           @NonNull View itemView,
                           int which,

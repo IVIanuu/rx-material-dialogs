@@ -39,7 +39,7 @@ public class MaterialSimpleListDialogBuilder extends BaseDialogBuilder<MaterialS
     private List<MaterialSimpleListItem> items = new ArrayList<>();
     private RecyclerView.LayoutManager layoutManager;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public MaterialSimpleListDialogBuilder(@NonNull Context context) {
         super(context);
         setThisBuilder(this);

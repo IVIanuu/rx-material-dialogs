@@ -35,7 +35,7 @@ import java.util.Collection;
  */
 public class BaseListDialogBuilder<T extends BaseListDialogBuilder> extends BaseDialogBuilder<T> {
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public BaseListDialogBuilder(@NonNull Context context) {
         super(context);
     }

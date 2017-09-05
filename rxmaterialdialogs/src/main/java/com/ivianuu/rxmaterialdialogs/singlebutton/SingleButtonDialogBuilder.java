@@ -30,7 +30,7 @@ import io.reactivex.Maybe;
  */
 public class SingleButtonDialogBuilder extends BaseDialogBuilder<SingleButtonDialogBuilder> {
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SingleButtonDialogBuilder(@NonNull Context context) {
         super(context);
         setThisBuilder(this);

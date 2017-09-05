@@ -28,7 +28,7 @@ import io.reactivex.MaybeOnSubscribe;
 /**
  * Dialog single
  */
-@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+@RestrictTo(RestrictTo.Scope.LIBRARY)
 public abstract class DialogMaybe<T> implements MaybeOnSubscribe<T> {
 
     private MaterialDialog.Builder dialogBuilder;

@@ -33,7 +33,7 @@ public class MultiChoiceListDialogBuilder extends BaseListDialogBuilder<MultiCho
 
     private Integer[] selectedIndices;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public MultiChoiceListDialogBuilder(@NonNull Context context) {
         super(context);
         setThisBuilder(this);

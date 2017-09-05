@@ -70,7 +70,7 @@ public class ColorChooserDialogBuilder {
     boolean setPreselectionColor = false;
 
     @SuppressLint("PrivateResource")
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public ColorChooserDialogBuilder(@NonNull Context context) {
         this.context = context;
 

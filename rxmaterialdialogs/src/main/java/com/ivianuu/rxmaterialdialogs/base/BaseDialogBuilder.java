@@ -44,7 +44,7 @@ public class BaseDialogBuilder<T extends BaseDialogBuilder> {
     protected MaterialDialog.Builder wrappedBuilder;
     protected T thisBuilder;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public BaseDialogBuilder(@NonNull Context context) {
         wrappedBuilder = new MaterialDialog.Builder(context);
     }

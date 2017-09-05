@@ -30,7 +30,7 @@ public class InputDialogEvent extends DialogEvent {
 
     private CharSequence input;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public InputDialogEvent(@NonNull MaterialDialog dialog, @NonNull CharSequence input) {
         super(dialog);
         this.input = input;

@@ -39,7 +39,7 @@ public class InputDialogBuilder extends BaseDialogBuilder<InputDialogBuilder> {
     private CharSequence prefill;
     private boolean allowEmptyInput;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public InputDialogBuilder(@NonNull Context context) {
         super(context);
         setThisBuilder(this);

@@ -31,7 +31,7 @@ public class MultiChoiceListDialogEvent extends DialogEvent {
     private Integer[] which;
     private CharSequence[] text;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public MultiChoiceListDialogEvent(@NonNull MaterialDialog dialog,
                                 @NonNull Integer[] which,
                                 @NonNull CharSequence[] text) {

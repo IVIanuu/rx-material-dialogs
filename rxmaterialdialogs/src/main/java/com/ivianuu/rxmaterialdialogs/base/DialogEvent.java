@@ -28,7 +28,7 @@ public class DialogEvent {
 
     private MaterialDialog dialog;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public DialogEvent(@NonNull MaterialDialog dialog) {
         this.dialog = dialog;
     }

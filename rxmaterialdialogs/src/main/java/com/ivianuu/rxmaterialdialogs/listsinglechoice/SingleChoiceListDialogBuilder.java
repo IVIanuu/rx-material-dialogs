@@ -32,7 +32,7 @@ public class SingleChoiceListDialogBuilder extends BaseListDialogBuilder<SingleC
 
     private int selectedIndex = -1;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SingleChoiceListDialogBuilder(@NonNull Context context) {
         super(context);
         setThisBuilder(this);

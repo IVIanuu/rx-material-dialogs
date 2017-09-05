@@ -32,30 +32,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Material list adapter
  */
-public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapter.ListVH> implements MDAdapter {
+final class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapter.ListVH> implements MDAdapter {
 
     private MaterialDialog dialog;
-    private List<MaterialListItem> items;
-    private Callback callback;
+    private final List<MaterialListItem> items;
+    private final Callback callback;
 
-    public MaterialListAdapter(Callback callback) {
-        items = new ArrayList<>(4);
+    MaterialListAdapter(Callback callback) {
+        this.items = new ArrayList<>(4);
         this.callback = callback;
     }
 
-    public void add(MaterialListItem item) {
-        items.add(item);
-        notifyItemInserted(items.size() - 1);
-    }
-
-    public void clear() {
-        items.clear();
-        notifyDataSetChanged();
-    }
-
-    public MaterialListItem getItem(int index) {
+    MaterialListItem getItem(int index) {
         return items.get(index);
     }
 
@@ -104,11 +94,9 @@ public class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapte
         return items.size();
     }
 
-    public interface Callback {
-
+    interface Callback {
         void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialListItem item);
     }
-
 
     static class ListVH extends RecyclerView.ViewHolder implements View.OnClickListener {
 

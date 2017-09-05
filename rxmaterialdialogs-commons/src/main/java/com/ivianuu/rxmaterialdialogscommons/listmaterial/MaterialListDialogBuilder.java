@@ -38,7 +38,7 @@ public class MaterialListDialogBuilder extends BaseDialogBuilder<MaterialListDia
     private List<MaterialListItem> items = new ArrayList<>();
     private RecyclerView.LayoutManager layoutManager;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public MaterialListDialogBuilder(@NonNull Context context) {
         super(context);
         setThisBuilder(this);

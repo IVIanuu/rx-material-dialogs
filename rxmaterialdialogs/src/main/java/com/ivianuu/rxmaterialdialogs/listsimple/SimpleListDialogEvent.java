@@ -43,7 +43,7 @@ public class SimpleListDialogEvent extends DialogEvent {
     private CharSequence text;
     private int eventType;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SimpleListDialogEvent(@NonNull MaterialDialog dialog,
                           @NonNull View itemView,
                           int position,

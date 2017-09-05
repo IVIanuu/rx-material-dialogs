@@ -30,7 +30,7 @@ public class SingleButtonDialogEvent extends DialogEvent {
 
     private DialogAction which;
 
-    @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SingleButtonDialogEvent(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
         super(dialog);
         this.which = which;
