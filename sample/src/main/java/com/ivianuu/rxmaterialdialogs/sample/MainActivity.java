@@ -1,8 +1,8 @@
 package com.ivianuu.rxmaterialdialogs.sample;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.widget.Toast;
 
@@ -13,10 +13,11 @@ import com.ivianuu.rxmaterialdialogs.input.InputDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listmultichoice.MultiChoiceListDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogEvent;
-
 import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogEvent;
+import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListDialogBuilder;
+import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListItem;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogEvent;
@@ -40,11 +41,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        materialList();
+        customListDialog();
+    }
+
+    private void customListDialog() {
+        CustomListDialogBuilder<TestListItem> builder
+                = RxMaterialDialogsCommons.customListDialog(this);
+
+        for (int i = 0; i < 100; i++) {
+            builder.addItem(new TestListItem("Test " + i));
+        }
+
+        disposable = builder.build()
+                .map(new Function<CustomListDialogEvent<TestListItem>, TestListItem>() {
+                    @Override
+                    public TestListItem apply(CustomListDialogEvent<TestListItem> event) throws Exception {
+                        return event.getItem();
+                    }
+                })
+                .map(new Function<TestListItem, String>() {
+                    @Override
+                    public String apply(TestListItem testListItem) throws Exception {
+                        return testListItem.getModel();
+                    }
+                })
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Toast.makeText(MainActivity.this, s + "clicked", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void colorChooserDialog() {
-        RxMaterialDialogsCommons.colorChooserDialog(this)
+        disposable = RxMaterialDialogsCommons.colorChooserDialog(this)
                 .title("Color chooser")
                 .allowUserColorInput(true)
                 .allowUserColorInputAlpha(true)
@@ -134,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void singleChoice() {
-        RxMaterialDialogs.singleChoiceListDialog(this)
+        disposable = RxMaterialDialogs.singleChoiceListDialog(this)
                 .items("Ha", "jfdjf", "kgsklkgesg", "klmsklgmrhmlh")
                 .positiveText("Ok")
                 .negativeText("Cance")
@@ -148,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void multiChoice() {
-        RxMaterialDialogs.multiChoiceListDialog(this)
+        disposable = RxMaterialDialogs.multiChoiceListDialog(this)
                 .items("Ha", "He", "hp", "iknff", "mktlkt", "kmgmg", "kmkgggrreesss")
                 .positiveText("Ok")
                 .neutralText("Netral")
@@ -163,10 +193,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void simpleList() {
-        RxMaterialDialogs.simpleListDialog(this)
+        disposable = RxMaterialDialogs.simpleListDialog(this)
                 .title("Select a item")
                 .content("Please :D")
-                .items("Hallo", "Bye", "Joa", "Alles klar", "Nutte", "Noch", "Eins")
+                .items("Hallo", "Bye", "Joa", "Alles klar", "Noch", "Eins")
                 .build()
                 .subscribe(new Consumer<SimpleListDialogEvent>() {
                     @Override
@@ -186,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void login() {
-        RxMaterialDialogs.singleButtonDialog(this)
+        disposable = RxMaterialDialogs.singleButtonDialog(this)
                 .title("You have to login")
                 .positiveText("OK")
                 .negativeText("Not yet")

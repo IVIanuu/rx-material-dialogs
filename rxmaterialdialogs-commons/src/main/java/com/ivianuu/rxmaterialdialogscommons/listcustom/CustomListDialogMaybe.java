@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogscommons.listmaterial;
+package com.ivianuu.rxmaterialdialogscommons.listcustom;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -31,33 +31,35 @@ import io.reactivex.MaybeEmitter;
 /**
  * Material simple list dialog observable
  */
-class MaterialListDialogMaybe extends DialogMaybe<MaterialListDialogEvent> {
+class CustomListDialogMaybe<Item extends CustomListItem> extends DialogMaybe<CustomListDialogEvent<Item>> {
 
-    private List<MaterialListItem> items;
+    private List<Item> items;
     private RecyclerView.LayoutManager layoutManager;
 
-    private MaterialListDialogMaybe(MaterialDialog.Builder dialogBuilder,
-                                          List<MaterialListItem> items,
-                                          RecyclerView.LayoutManager layoutManager) {
+    private CustomListDialogMaybe(MaterialDialog.Builder dialogBuilder,
+                                    List<Item> items,
+                                    RecyclerView.LayoutManager layoutManager) {
         super(dialogBuilder);
         this.items = items;
         this.layoutManager = layoutManager;
     }
 
-    static Maybe<MaterialListDialogEvent> create(@NonNull MaterialDialog.Builder builder,
-                                                       @NonNull List<MaterialListItem> items,
-                                                       @NonNull RecyclerView.LayoutManager layoutManager) {
-        return Maybe.create(new MaterialListDialogMaybe(builder, items, layoutManager));
+    static <Item extends CustomListItem>
+    Maybe<CustomListDialogEvent<Item>> create(@NonNull MaterialDialog.Builder builder,
+                                                 @NonNull List<Item> items,
+                                                 @NonNull RecyclerView.LayoutManager layoutManager) {
+        return Maybe.create(new CustomListDialogMaybe<>(builder, items, layoutManager));
     }
 
     @Override
-    protected void onPreBuild(@NonNull final MaybeEmitter<MaterialListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
+    protected void onPreBuild(@NonNull final MaybeEmitter<CustomListDialogEvent<Item>> e,
+                              @NonNull MaterialDialog.Builder dialogBuilder) {
         // create adapter
-        MaterialListAdapter adapter = new MaterialListAdapter(items, new MaterialListAdapter.Callback() {
+        CustomListAdapter<Item> adapter = new CustomListAdapter<>(items, new CustomListAdapter.Callback<Item>() {
             @Override
-            public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialListItem item) {
+            public void onCustomListItemSelected(MaterialDialog dialog, int index, Item item) {
                 if (!e.isDisposed()) {
-                    e.onSuccess(new MaterialListDialogEvent(dialog, index, item));
+                    e.onSuccess(new CustomListDialogEvent<Item>(dialog, index, item));
                     e.onComplete();
                 }
             }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogscommons.listmaterial;
+package com.ivianuu.rxmaterialdialogscommons.listcustom;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
@@ -23,17 +23,17 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
 
 /**
- * Represents a material simple list event
+ * Custom list dialog event
  */
-public class MaterialListDialogEvent extends DialogEvent {
+public final class CustomListDialogEvent<Item extends CustomListItem> extends DialogEvent {
 
     private final int index;
-    private final MaterialListItem item;
+    private final Item item;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
-    public MaterialListDialogEvent(@NonNull MaterialDialog dialog,
-                                         int index,
-                                         @NonNull MaterialListItem item) {
+    public CustomListDialogEvent(@NonNull MaterialDialog dialog,
+                                 int index,
+                                 @NonNull Item item) {
         super(dialog);
         this.index = index;
         this.item = item;
@@ -50,8 +50,7 @@ public class MaterialListDialogEvent extends DialogEvent {
      * Returns the item of this event
      */
     @NonNull
-    public MaterialListItem getItem() {
+    public Item getItem() {
         return item;
     }
-
 }

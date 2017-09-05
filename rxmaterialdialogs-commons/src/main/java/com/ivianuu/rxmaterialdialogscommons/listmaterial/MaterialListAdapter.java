@@ -28,7 +28,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.internal.MDAdapter;
 import com.ivianuu.rxmaterialdialogscommons.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,12 +39,12 @@ final class MaterialListAdapter extends RecyclerView.Adapter<MaterialListAdapter
     private final List<MaterialListItem> items;
     private final Callback callback;
 
-    MaterialListAdapter(Callback callback) {
-        this.items = new ArrayList<>(4);
+    MaterialListAdapter(List<MaterialListItem> items, Callback callback) {
+        this.items = items;
         this.callback = callback;
     }
 
-    MaterialListItem getItem(int index) {
+    private MaterialListItem getItem(int index) {
         return items.get(index);
     }
 

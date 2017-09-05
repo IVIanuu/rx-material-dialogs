@@ -16,7 +16,6 @@
 
 package com.ivianuu.rxmaterialdialogs.input;
 
-import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 
 import com.afollestad.materialdialogs.DialogAction;

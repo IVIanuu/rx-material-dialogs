@@ -20,6 +20,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogBuilder;
+import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListDialogBuilder;
+import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListItem;
 import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogBuilder;
 
@@ -43,6 +45,14 @@ public final class RxMaterialDialogsCommons {
     @NonNull
     public static ColorChooserDialogBuilder colorChooserDialog(@NonNull Context context) {
         return new ColorChooserDialogBuilder(context);
+    }
+
+    /**
+     * Returns a new custom list dialog
+     */
+    @NonNull
+    public static <Item extends CustomListItem> CustomListDialogBuilder<Item> customListDialog(@NonNull Context context) {
+        return new CustomListDialogBuilder<>(context);
     }
 
     /**
