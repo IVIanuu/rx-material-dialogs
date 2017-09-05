@@ -25,11 +25,11 @@ import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
 /**
  * Represents color chooser dialog event
  */
-public class ColorChooserDialogEvent extends DialogEvent {
+public final class ColorChooserDialogEvent extends DialogEvent {
 
-    private int selectedColor;
+    private final int selectedColor;
 
-    public ColorChooserDialogEvent(@NonNull MaterialDialog dialog, @ColorInt int selectedColor) {
+    ColorChooserDialogEvent(@NonNull MaterialDialog dialog, @ColorInt int selectedColor) {
         super(dialog);
         this.selectedColor = selectedColor;
     }

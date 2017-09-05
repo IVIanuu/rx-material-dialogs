@@ -18,6 +18,7 @@ import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogEvent;
+import com.ivianuu.rxmaterialdialogscommons.filechooser.FileChooserDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogEvent;
 
 import java.util.ArrayList;
@@ -39,12 +40,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        customListDialog();
+        fileChooserDialog();
+    }
+
+    private void fileChooserDialog() {
+        disposable = RxMaterialDialogsCommons.fileChooserDialogBuilder(this)
+                .build()
+                .subscribe(new Consumer<FileChooserDialogEvent>() {
+                    @Override
+                    public void accept(FileChooserDialogEvent fileChooserDialogEvent) throws Exception {
+                        Toast.makeText(MainActivity.this, "file selected " + fileChooserDialogEvent.getSelectedFile().getAbsolutePath(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void customListDialog() {
         CustomListDialogBuilder<TestListItem> builder
-                = RxMaterialDialogsCommons.customListDialog(this);
+                = RxMaterialDialogs.customListDialog(this);
 
         for (int i = 0; i < 100; i++) {
             builder.addItem(new TestListItem("Test " + i));

@@ -20,14 +20,10 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogBuilder;
-import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogBuilder;
-import com.ivianuu.rxmaterialdialogs.listcustom.CustomListItem;
+import com.ivianuu.rxmaterialdialogscommons.filechooser.FileChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogBuilder;
 
-// TODO: 26.07.2017  Add file selector
-// TODO: 26.07.2017  Add folder selector
-// TODO: 26.07.2017 billing dialog
-// TODO: 26.07.2017 changelog dialog 
+// TODO: 26.07.2017  Add folder chooser
 
 /**
  * Material dialog commons
@@ -44,6 +40,14 @@ public final class RxMaterialDialogsCommons {
     @NonNull
     public static ColorChooserDialogBuilder colorChooserDialog(@NonNull Context context) {
         return new ColorChooserDialogBuilder(context);
+    }
+
+    /**
+     * Returns a new file chooser dialog
+     */
+    @NonNull
+    public static FileChooserDialogBuilder fileChooserDialogBuilder(@NonNull Context context) {
+        return new FileChooserDialogBuilder(context);
     }
 
     /**

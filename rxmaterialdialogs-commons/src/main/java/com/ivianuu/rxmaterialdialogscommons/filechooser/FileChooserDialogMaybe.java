@@ -14,46 +14,47 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogscommons.color;
+package com.ivianuu.rxmaterialdialogscommons.filechooser;
 
 import android.support.annotation.NonNull;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.ivianuu.rxmaterialdialogs.base.DialogDisposable;
+
+import java.io.File;
 
 import io.reactivex.Maybe;
 import io.reactivex.MaybeEmitter;
 import io.reactivex.MaybeOnSubscribe;
 
 /**
- * Color chooser dialog maybe
+ * File chooser dialog maybe
  */
-final class ColorChooserDialogMaybe implements MaybeOnSubscribe<ColorChooserDialogEvent> {
+final class FileChooserDialogMaybe implements MaybeOnSubscribe<FileChooserDialogEvent> {
 
-    private final ColorChooserDialogBuilder builder;
+    private final FileChooserDialogBuilder builder;
 
-    private ColorChooserDialogMaybe(ColorChooserDialogBuilder builder) {
+    private FileChooserDialogMaybe(FileChooserDialogBuilder builder) {
         this.builder = builder;
     }
 
-    static Maybe<ColorChooserDialogEvent> create(@NonNull ColorChooserDialogBuilder builder) {
-        return Maybe.create(new ColorChooserDialogMaybe(builder));
+    static Maybe<FileChooserDialogEvent> create(@NonNull FileChooserDialogBuilder builder) {
+        return Maybe.create(new FileChooserDialogMaybe(builder));
     }
 
     @Override
-    public void subscribe(final MaybeEmitter<ColorChooserDialogEvent> e) throws Exception {
-        // set color callback
-        builder.callback(new ColorChooserDialog.ColorCallback() {
+    public void subscribe(final MaybeEmitter<FileChooserDialogEvent> e) throws Exception {
+        // set file callback
+        builder.callback(new FileChooserDialog.FileCallback() {
             @Override
-            public void onColorSelection(@NonNull MaterialDialog dialog, int selectedColor) {
+            public void onFileSelection(@NonNull FileChooserDialog dialog, @NonNull File file) {
                 if (!e.isDisposed()) {
-                    e.onSuccess(new ColorChooserDialogEvent(dialog, selectedColor));
+                    e.onSuccess(new FileChooserDialogEvent(dialog.materialDialog, file));
                     e.onComplete();
                 }
             }
         });
 
-        ColorChooserDialog dialog = builder.create();
+        FileChooserDialog dialog = builder.create();
 
         // set disposable
         e.setDisposable(new DialogDisposable(dialog.materialDialog));

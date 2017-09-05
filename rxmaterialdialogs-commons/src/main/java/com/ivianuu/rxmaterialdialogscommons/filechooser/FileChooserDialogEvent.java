@@ -14,40 +14,32 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogs.base;
+package com.ivianuu.rxmaterialdialogscommons.filechooser;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
 
-import io.reactivex.disposables.Disposable;
+import java.io.File;
 
 /**
- * Dismisses the dialog on dispose
+ * File chooser dialog event
  */
-@RestrictTo(RestrictTo.Scope.LIBRARY)
-public final class DialogDisposable implements Disposable {
+public final class FileChooserDialogEvent extends DialogEvent {
 
-    private final MaterialDialog dialog;
-    private boolean disposed;
+    private final File selectedFile;
 
-    public DialogDisposable(@NonNull MaterialDialog dialog) {
-        this.dialog = dialog;
+    FileChooserDialogEvent(@NonNull MaterialDialog dialog, @NonNull File selectedFile) {
+        super(dialog);
+        this.selectedFile = selectedFile;
     }
 
-    @Override
-    public void dispose() {
-        if (!disposed) {
-            disposed = true;
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
-        }
-    }
-
-    @Override
-    public boolean isDisposed() {
-        return disposed;
+    /**
+     * Returns the selected file of this event
+     */
+    @NonNull
+    public File getSelectedFile() {
+        return selectedFile;
     }
 }

@@ -28,8 +28,8 @@ import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
  */
 public class MultiChoiceListDialogEvent extends DialogEvent {
 
-    private Integer[] which;
-    private CharSequence[] text;
+    private final Integer[] which;
+    private final CharSequence[] text;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public MultiChoiceListDialogEvent(@NonNull MaterialDialog dialog,

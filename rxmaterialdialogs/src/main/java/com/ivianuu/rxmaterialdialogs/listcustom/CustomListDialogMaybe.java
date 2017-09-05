@@ -33,8 +33,8 @@ import io.reactivex.MaybeEmitter;
  */
 class CustomListDialogMaybe<Item extends CustomListItem> extends DialogMaybe<CustomListDialogEvent<Item>> {
 
-    private List<Item> items;
-    private RecyclerView.LayoutManager layoutManager;
+    private final List<Item> items;
+    private final RecyclerView.LayoutManager layoutManager;
 
     private CustomListDialogMaybe(MaterialDialog.Builder dialogBuilder,
                                     List<Item> items,
@@ -44,10 +44,9 @@ class CustomListDialogMaybe<Item extends CustomListItem> extends DialogMaybe<Cus
         this.layoutManager = layoutManager;
     }
 
-    static <Item extends CustomListItem>
-    Maybe<CustomListDialogEvent<Item>> create(@NonNull MaterialDialog.Builder builder,
-                                                 @NonNull List<Item> items,
-                                                 @NonNull RecyclerView.LayoutManager layoutManager) {
+    static <Item extends CustomListItem> Maybe<CustomListDialogEvent<Item>>
+    create(@NonNull MaterialDialog.Builder builder, @NonNull List<Item> items,
+           @NonNull RecyclerView.LayoutManager layoutManager) {
         return Maybe.create(new CustomListDialogMaybe<>(builder, items, layoutManager));
     }
 

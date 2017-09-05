@@ -199,12 +199,13 @@ public class ColorChooserDialogBuilder {
         return this;
     }
 
+    ColorChooserDialog create() {
+        return new ColorChooserDialog(this);
+    }
+
     @CheckResult @NonNull
     public Maybe<ColorChooserDialogEvent> build() {
         return ColorChooserDialogMaybe.create(this);
     }
 
-    ColorChooserDialog create() {
-        return new ColorChooserDialog(this);
-    }
 }

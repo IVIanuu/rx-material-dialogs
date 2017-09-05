@@ -30,9 +30,9 @@ import io.reactivex.MaybeEmitter;
  */
 class InputDialogMaybe extends DialogMaybe<InputDialogEvent> {
 
-    private CharSequence hint;
-    private CharSequence prefill;
-    private boolean allowEmptyInput;
+    private final CharSequence hint;
+    private final CharSequence prefill;
+    private final boolean allowEmptyInput;
 
     private InputDialogMaybe(MaterialDialog.Builder dialogBuilder,
                              CharSequence hint,

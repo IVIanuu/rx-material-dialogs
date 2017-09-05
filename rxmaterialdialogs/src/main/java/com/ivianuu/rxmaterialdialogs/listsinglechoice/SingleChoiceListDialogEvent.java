@@ -28,9 +28,9 @@ import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
  */
 public class SingleChoiceListDialogEvent extends DialogEvent {
 
-    private View itemView;
-    private int which;
-    private CharSequence text;
+    private final View itemView;
+    private final int which;
+    private final CharSequence text;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SingleChoiceListDialogEvent(@NonNull MaterialDialog dialog,

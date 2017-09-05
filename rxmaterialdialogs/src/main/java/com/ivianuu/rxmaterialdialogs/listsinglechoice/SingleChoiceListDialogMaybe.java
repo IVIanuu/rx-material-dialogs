@@ -31,7 +31,7 @@ import io.reactivex.MaybeEmitter;
  */
 class SingleChoiceListDialogMaybe extends DialogMaybe<SingleChoiceListDialogEvent> {
 
-    private int selectedIndex;
+    private final int selectedIndex;
 
     private SingleChoiceListDialogMaybe(MaterialDialog.Builder dialogBuilder, int selectedIndex) {
         super(dialogBuilder);

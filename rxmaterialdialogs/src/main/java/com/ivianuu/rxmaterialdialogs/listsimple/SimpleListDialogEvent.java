@@ -38,10 +38,10 @@ public class SimpleListDialogEvent extends DialogEvent {
         int LONG_CLICK = 1;
     }
 
-    private View itemView;
-    private int position;
-    private CharSequence text;
-    private int eventType;
+    private final View itemView;
+    private final int position;
+    private final CharSequence text;
+    private final int eventType;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SimpleListDialogEvent(@NonNull MaterialDialog dialog,

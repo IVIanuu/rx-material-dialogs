@@ -41,7 +41,7 @@ import com.afollestad.materialdialogs.Theme;
  */
 public class BaseDialogBuilder<T extends BaseDialogBuilder> {
 
-    protected MaterialDialog.Builder wrappedBuilder;
+    protected final MaterialDialog.Builder wrappedBuilder;
     protected T thisBuilder;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)

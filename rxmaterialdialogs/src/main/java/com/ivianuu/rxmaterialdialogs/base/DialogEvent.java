@@ -26,7 +26,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
  */
 public class DialogEvent {
 
-    private MaterialDialog dialog;
+    private final MaterialDialog dialog;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public DialogEvent(@NonNull MaterialDialog dialog) {

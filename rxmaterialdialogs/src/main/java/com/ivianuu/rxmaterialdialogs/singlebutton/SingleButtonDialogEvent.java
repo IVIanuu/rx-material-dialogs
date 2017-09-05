@@ -28,7 +28,7 @@ import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
  */
 public class SingleButtonDialogEvent extends DialogEvent {
 
-    private DialogAction which;
+    private final DialogAction which;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public SingleButtonDialogEvent(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {

@@ -28,7 +28,7 @@ import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
  */
 public class InputDialogEvent extends DialogEvent {
 
-    private CharSequence input;
+    private final CharSequence input;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public InputDialogEvent(@NonNull MaterialDialog dialog, @NonNull CharSequence input) {

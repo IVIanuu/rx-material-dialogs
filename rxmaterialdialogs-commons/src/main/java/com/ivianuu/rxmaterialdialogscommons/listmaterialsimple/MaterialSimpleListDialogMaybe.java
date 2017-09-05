@@ -35,8 +35,8 @@ import io.reactivex.MaybeEmitter;
  */
 class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialogEvent> {
 
-    private List<MaterialSimpleListItem> items;
-    private RecyclerView.LayoutManager layoutManager;
+    private final List<MaterialSimpleListItem> items;
+    private final RecyclerView.LayoutManager layoutManager;
 
     private MaterialSimpleListDialogMaybe(MaterialDialog.Builder dialogBuilder,
                                           List<MaterialSimpleListItem> items,

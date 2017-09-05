@@ -35,7 +35,7 @@ import io.reactivex.Maybe;
  */
 public class CustomListDialogBuilder<Item extends CustomListItem> extends BaseDialogBuilder<CustomListDialogBuilder> {
 
-    private List<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
     private RecyclerView.LayoutManager layoutManager;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)

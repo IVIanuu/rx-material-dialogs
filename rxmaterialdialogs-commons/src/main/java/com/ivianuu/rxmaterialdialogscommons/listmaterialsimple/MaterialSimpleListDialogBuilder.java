@@ -36,7 +36,7 @@ import io.reactivex.Maybe;
  */
 public class MaterialSimpleListDialogBuilder extends BaseDialogBuilder<MaterialSimpleListDialogBuilder> {
 
-    private List<MaterialSimpleListItem> items = new ArrayList<>();
+    private final List<MaterialSimpleListItem> items = new ArrayList<>();
     private RecyclerView.LayoutManager layoutManager;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)

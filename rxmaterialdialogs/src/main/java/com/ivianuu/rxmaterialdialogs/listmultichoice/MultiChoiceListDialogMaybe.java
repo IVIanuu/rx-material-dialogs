@@ -30,7 +30,7 @@ import io.reactivex.MaybeEmitter;
  */
 class MultiChoiceListDialogMaybe extends DialogMaybe<MultiChoiceListDialogEvent> {
 
-    private Integer[] selectedIndices;
+    private final Integer[] selectedIndices;
 
     private MultiChoiceListDialogMaybe(MaterialDialog.Builder dialogBuilder, Integer[] selectedIndices) {
         super(dialogBuilder);

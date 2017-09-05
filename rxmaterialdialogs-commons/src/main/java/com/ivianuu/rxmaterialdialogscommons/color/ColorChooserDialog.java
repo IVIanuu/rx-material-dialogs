@@ -52,8 +52,8 @@ final class ColorChooserDialog implements View.OnClickListener, View.OnLongClick
     private int[] colorsTop;
     @Nullable
     private int[][] colorsSub;
-    private int circleSize;
-    private GridView grid;
+    private final int circleSize;
+    private final GridView grid;
     private View colorChooserCustomFrame;
     private EditText customColorHex;
     private View customColorIndicator;
@@ -75,7 +75,7 @@ final class ColorChooserDialog implements View.OnClickListener, View.OnLongClick
     private int subIndex;
     private boolean inSub;
 
-    private ColorChooserDialogBuilder builder;
+    private final ColorChooserDialogBuilder builder;
 
     @SuppressLint("PrivateResource")
     ColorChooserDialog(final ColorChooserDialogBuilder builder) {
@@ -465,7 +465,7 @@ final class ColorChooserDialog implements View.OnClickListener, View.OnLongClick
         }
     }
 
-    public void show() {
+    void show() {
         materialDialog.show();
     }
 

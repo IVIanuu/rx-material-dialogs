@@ -28,8 +28,8 @@ import com.ivianuu.rxmaterialdialogs.base.DialogEvent;
  */
 public class MaterialSimpleListDialogEvent extends DialogEvent {
 
-    private int index;
-    private MaterialSimpleListItem item;
+    private final int index;
+    private final MaterialSimpleListItem item;
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     public MaterialSimpleListDialogEvent(@NonNull MaterialDialog dialog,
