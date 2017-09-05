@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogscommons.listcustom;
+package com.ivianuu.rxmaterialdialogs.listcustom;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;

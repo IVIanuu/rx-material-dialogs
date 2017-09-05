@@ -14,35 +14,27 @@
  * limitations under the License.
  */
 
-package com.ivianuu.rxmaterialdialogscommons.listcustom;
+package com.ivianuu.rxmaterialdialogs.listcustom;
 
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 /**
- * Custom list item
+ * Custom model list item
  */
-public interface CustomListItem<VH extends RecyclerView.ViewHolder> {
+public abstract class CustomModelListItem<Model, VH extends RecyclerView.ViewHolder> implements CustomListItem<VH> {
+
+    private final Model model;
+
+    public CustomModelListItem(@NonNull Model model) {
+        this.model = model;
+    }
 
     /**
-     * Returns the layout resource of this item
+     * Returns the model of this list item
      */
-    @LayoutRes int getLayoutRes();
-
-    /**
-     * Returns a new view holder
-     */
-    @NonNull VH createViewHolder(View view);
-
-    /**
-     * Binds the item to the view
-     */
-    void bind(@NonNull VH holder);
-
-    /**
-     * Unbinds the item from the view
-     */
-    void unbind(@NonNull VH holder);
+    @NonNull
+    public Model getModel() {
+        return model;
+    }
 }

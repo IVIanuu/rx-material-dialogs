@@ -21,7 +21,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomModelListItem;
+import com.ivianuu.rxmaterialdialogs.listcustom.CustomModelListItem;
 
 /**
  * @author Manuel Wrage (IVIanuu)

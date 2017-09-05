@@ -16,8 +16,8 @@ import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogEven
 import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogEvent;
-import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListDialogBuilder;
-import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListDialogEvent;
+import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogBuilder;
+import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogEvent;
 
 import java.util.ArrayList;

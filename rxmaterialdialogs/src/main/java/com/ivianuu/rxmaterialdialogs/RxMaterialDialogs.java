@@ -20,6 +20,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ivianuu.rxmaterialdialogs.input.InputDialogBuilder;
+import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogBuilder;
+import com.ivianuu.rxmaterialdialogs.listcustom.CustomListItem;
 import com.ivianuu.rxmaterialdialogs.listmultichoice.MultiChoiceListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogBuilder;
@@ -36,6 +38,14 @@ public final class RxMaterialDialogs {
 
     private RxMaterialDialogs() {
         // no instances
+    }
+
+    /**
+     * Returns a new custom list dialog
+     */
+    @NonNull
+    public static <Item extends CustomListItem> CustomListDialogBuilder<Item> customListDialog(@NonNull Context context) {
+        return new CustomListDialogBuilder<>(context);
     }
 
     /**
