@@ -18,8 +18,6 @@ import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listcustom.CustomListDialogEvent;
-import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListDialogEvent;
-import com.ivianuu.rxmaterialdialogscommons.listmaterial.MaterialListItem;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogEvent;
 
 import java.util.ArrayList;
@@ -118,47 +116,6 @@ public class MainActivity extends AppCompatActivity {
                     public void accept(MaterialSimpleListDialogEvent materialSimpleListDialogEvent) throws Exception {
                         //noinspection ConstantConditions
                         Toast.makeText(MainActivity.this, materialSimpleListDialogEvent.getItem().getContent() + " clicked", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void materialList() {
-        List<MaterialListItem> items = new ArrayList<>();
-        int count = 0;
-        while (count < 100) {
-            MaterialListItem item = new MaterialListItem.Builder(this)
-                    .id(count)
-                    .title("Hallo " + (count + 1))
-                    .text("text...mflkwmflkamwwflkmawlkfmlkamflkawmflkmflkMWFKLMAWLKMLKMFLKMLlkamlmfamlfamfalmwalmafw")
-                    .icon(R.mipmap.ic_launcher)
-                    .backgroundColor(Color.TRANSPARENT)
-                    .build();
-
-            items.add(item);
-
-            count++;
-        }
-
-        disposable = RxMaterialDialogsCommons.materialListDialog(this)
-                .negativeText("HEhe")
-                .addItems(items)
-                .build()
-                .map(new Function<MaterialListDialogEvent, MaterialListItem>() {
-                    @Override
-                    public MaterialListItem apply(MaterialListDialogEvent materialListDialogEvent) throws Exception {
-                        return materialListDialogEvent.getItem();
-                    }
-                })
-                .map(new Function<MaterialListItem, CharSequence>() {
-                    @Override
-                    public CharSequence apply(MaterialListItem materialListItem) throws Exception {
-                        return materialListItem.getTitle();
-                    }
-                })
-                .subscribe(new Consumer<CharSequence>() {
-                    @Override
-                    public void accept(CharSequence s) throws Exception {
-                        Toast.makeText(MainActivity.this, s + " clicked", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
