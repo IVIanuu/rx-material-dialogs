@@ -16,7 +16,6 @@
 
 package com.ivianuu.rxmaterialdialogs.base;
 
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.RestrictTo;
 
@@ -41,12 +40,7 @@ public abstract class DialogMaybe<T> implements MaybeOnSubscribe<T> {
     public final void subscribe(final MaybeEmitter<T> e) throws Exception {
         // set cancel listener
         dialogBuilder
-                .cancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        e.onComplete();
-                    }
-                });
+                .cancelListener(dialogInterface -> e.onComplete());
 
         // apply settings to the builder
         onPreBuild(e, dialogBuilder);

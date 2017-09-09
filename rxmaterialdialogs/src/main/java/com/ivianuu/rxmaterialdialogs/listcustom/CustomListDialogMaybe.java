@@ -19,7 +19,6 @@ package com.ivianuu.rxmaterialdialogs.listcustom;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ivianuu.rxmaterialdialogs.base.DialogMaybe;
 
@@ -54,25 +53,19 @@ class CustomListDialogMaybe<Item extends CustomListItem> extends DialogMaybe<Cus
     protected void onPreBuild(@NonNull final MaybeEmitter<CustomListDialogEvent<Item>> e,
                               @NonNull MaterialDialog.Builder dialogBuilder) {
         // create adapter
-        CustomListAdapter<Item> adapter = new CustomListAdapter<>(items, new CustomListAdapter.Callback<Item>() {
-            @Override
-            public void onCustomListItemSelected(MaterialDialog dialog, int index, Item item) {
-                if (!e.isDisposed()) {
-                    e.onSuccess(new CustomListDialogEvent<Item>(dialog, index, item));
-                    e.onComplete();
-                }
+        CustomListAdapter<Item> adapter = new CustomListAdapter<>(items, (dialog, index, item) -> {
+            if (!e.isDisposed()) {
+                e.onSuccess(new CustomListDialogEvent<>(dialog, index, item));
+                e.onComplete();
             }
         });
 
         // set adapter
         dialogBuilder
                 .adapter(adapter, layoutManager)
-                .onAny(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (!e.isDisposed()) {
-                            e.onComplete();
-                        }
+                .onAny((__, ___) -> {
+                    if (!e.isDisposed()) {
+                        e.onComplete();
                     }
                 });
     }

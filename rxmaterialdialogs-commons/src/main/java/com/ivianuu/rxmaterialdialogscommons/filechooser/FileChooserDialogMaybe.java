@@ -20,8 +20,6 @@ import android.support.annotation.NonNull;
 
 import com.ivianuu.rxmaterialdialogs.base.DialogDisposable;
 
-import java.io.File;
-
 import io.reactivex.Maybe;
 import io.reactivex.MaybeEmitter;
 import io.reactivex.MaybeOnSubscribe;
@@ -44,13 +42,10 @@ final class FileChooserDialogMaybe implements MaybeOnSubscribe<FileChooserDialog
     @Override
     public void subscribe(final MaybeEmitter<FileChooserDialogEvent> e) throws Exception {
         // set file callback
-        builder.callback(new FileChooserDialog.FileCallback() {
-            @Override
-            public void onFileSelection(@NonNull FileChooserDialog dialog, @NonNull File file) {
-                if (!e.isDisposed()) {
-                    e.onSuccess(new FileChooserDialogEvent(dialog.materialDialog, file));
-                    e.onComplete();
-                }
+        builder.callback((dialog, file) -> {
+            if (!e.isDisposed()) {
+                e.onSuccess(new FileChooserDialogEvent(dialog.materialDialog, file));
+                e.onComplete();
             }
         });
 

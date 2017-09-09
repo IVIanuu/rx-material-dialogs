@@ -18,7 +18,6 @@ package com.ivianuu.rxmaterialdialogs.singlebutton;
 
 import android.support.annotation.NonNull;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ivianuu.rxmaterialdialogs.base.DialogMaybe;
 
@@ -44,13 +43,10 @@ class SingleButtonDialogMaybe extends DialogMaybe<SingleButtonDialogEvent> {
     @Override
     protected void onPreBuild(@NonNull final MaybeEmitter<SingleButtonDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
-                .onAny(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (!e.isDisposed()) {
-                            e.onSuccess(new SingleButtonDialogEvent(dialog, which));
-                            e.onComplete();
-                        }
+                .onAny((dialog, which) -> {
+                    if (!e.isDisposed()) {
+                        e.onSuccess(new SingleButtonDialogEvent(dialog, which));
+                        e.onComplete();
                     }
                 });
     }

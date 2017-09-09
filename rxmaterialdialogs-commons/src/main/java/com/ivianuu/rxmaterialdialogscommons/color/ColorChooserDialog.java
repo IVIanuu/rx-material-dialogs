@@ -17,7 +17,6 @@
 package com.ivianuu.rxmaterialdialogscommons.color;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorInt;
@@ -134,41 +133,25 @@ final class ColorChooserDialog implements View.OnClickListener, View.OnLongClick
                         .neutralText(builder.allowUserCustom ? builder.customBtn : "")
                         .typeface(builder.mediumFont, builder.regularFont)
                         .onPositive(
-                                new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        builder.colorCallback.onColorSelection(dialog, getSelectedColor());
-                                        materialDialog.dismiss();
-                                    }
+                                (dialog, which) -> {
+                                    builder.colorCallback.onColorSelection(dialog, getSelectedColor());
+                                    materialDialog.dismiss();
                                 })
                         .onNegative(
-                                new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        if (isInSub()) {
-                                            materialDialog.setActionButton(DialogAction.NEGATIVE, ColorChooserDialog.this.builder.cancelBtn);
-                                            isInSub(false);
-                                            subIndex(-1); // Do this to avoid ArrayIndexOutOfBoundsException
-                                            invalidate();
-                                        } else {
-                                            materialDialog.cancel();
-                                        }
+                                (dialog, which) -> {
+                                    if (isInSub()) {
+                                        materialDialog.setActionButton(DialogAction.NEGATIVE, ColorChooserDialog.this.builder.cancelBtn);
+                                        isInSub(false);
+                                        subIndex(-1); // Do this to avoid ArrayIndexOutOfBoundsException
+                                        invalidate();
+                                    } else {
+                                        materialDialog.cancel();
                                     }
                                 })
                         .onNeutral(
-                                new MaterialDialog.SingleButtonCallback() {
-                                    @Override
-                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                        toggleCustom();
-                                    }
-                                })
+                                (dialog, which) -> toggleCustom())
                         .showListener(
-                                new DialogInterface.OnShowListener() {
-                                    @Override
-                                    public void onShow(DialogInterface dialog) {
-                                        invalidateDynamicButtonColors();
-                                    }
-                                });
+                                dialog -> invalidateDynamicButtonColors());
 
         if (builder.theme != null) {
             bd.theme(builder.theme);

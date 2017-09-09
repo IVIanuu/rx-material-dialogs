@@ -19,7 +19,6 @@ package com.ivianuu.rxmaterialdialogscommons.listmaterialsimple;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListAdapter;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
@@ -55,13 +54,10 @@ class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialog
     @Override
     protected void onPreBuild(@NonNull final MaybeEmitter<MaterialSimpleListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         // create adapter
-        MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter(new MaterialSimpleListAdapter.Callback() {
-            @Override
-            public void onMaterialListItemSelected(MaterialDialog dialog, int index, MaterialSimpleListItem item) {
-                if (!e.isDisposed()) {
-                    e.onSuccess(new MaterialSimpleListDialogEvent(dialog, index, item));
-                    e.onComplete();
-                }
+        MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter((dialog, index, item) -> {
+            if (!e.isDisposed()) {
+                e.onSuccess(new MaterialSimpleListDialogEvent(dialog, index, item));
+                e.onComplete();
             }
         });
 
@@ -73,12 +69,9 @@ class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialog
         // set adapter
         dialogBuilder
                 .adapter(adapter, layoutManager)
-                .onAny(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (!e.isDisposed()) {
-                            e.onComplete();
-                        }
+                .onAny((dialog, which) -> {
+                    if (!e.isDisposed()) {
+                        e.onComplete();
                     }
                 });
     }

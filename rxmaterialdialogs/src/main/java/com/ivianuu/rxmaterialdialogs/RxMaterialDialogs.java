@@ -30,7 +30,6 @@ import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogBuilder;
 // TODO: 26.07.2017  Add checkbox
 // TODO: 26.07.2017  Add progressbar
 // TODO: 26.07.2017  Add custom view
-
 /**
  * Class to access the builders
  */

@@ -10,26 +10,16 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
 import com.ivianuu.rxmaterialdialogs.RxMaterialDialogs;
 import com.ivianuu.rxmaterialdialogs.input.InputDialogEvent;
-import com.ivianuu.rxmaterialdialogs.listmultichoice.MultiChoiceListDialogEvent;
-import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogEvent;
-import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogEvent;
-import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogEvent;
-import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
-import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogEvent;
-import com.ivianuu.rxmaterialdialogscommons.filechooser.FileChooserDialogEvent;
-import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogEvent;
+import com.ivianuu.rxmaterialdialogs.listcustom.CustomModelListItem;
+import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogEvent;
+import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.MaybeSource;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.functions.Predicate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,19 +29,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        fileChooserDialog();
     }
 
     private void fileChooserDialog() {
         disposable = RxMaterialDialogsCommons.fileChooserDialogBuilder(this)
                 .build()
-                .subscribe(new Consumer<FileChooserDialogEvent>() {
-                    @Override
-                    public void accept(FileChooserDialogEvent fileChooserDialogEvent) throws Exception {
-                        Toast.makeText(MainActivity.this, "file selected " + fileChooserDialogEvent.getSelectedFile().getAbsolutePath(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .subscribe(fileChooserDialogEvent -> Toast.makeText(MainActivity.this, "file selected " + fileChooserDialogEvent.getSelectedFile().getAbsolutePath(), Toast.LENGTH_SHORT).show());
     }
 
     private void customListDialog() {
@@ -63,24 +46,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         disposable = builder.build()
-                .map(new Function<CustomListDialogEvent<TestListItem>, TestListItem>() {
-                    @Override
-                    public TestListItem apply(CustomListDialogEvent<TestListItem> event) throws Exception {
-                        return event.getItem();
-                    }
-                })
-                .map(new Function<TestListItem, String>() {
-                    @Override
-                    public String apply(TestListItem testListItem) throws Exception {
-                        return testListItem.getModel();
-                    }
-                })
-                .subscribe(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-                        Toast.makeText(MainActivity.this, s + "clicked", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .map(CustomListDialogEvent::getItem)
+                .map(CustomModelListItem::getModel)
+                .subscribe(s -> Toast.makeText(MainActivity.this, s + "clicked", Toast.LENGTH_SHORT).show());
     }
 
     private void colorChooserDialog() {
@@ -95,12 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 .dynamicButtonColor(true)
                 .preselect(Color.BLACK)
                 .build()
-                .subscribe(new Consumer<ColorChooserDialogEvent>() {
-                    @Override
-                    public void accept(ColorChooserDialogEvent colorChooserDialogEvent) throws Exception {
-                        Toast.makeText(MainActivity.this, "Color selected " + colorChooserDialogEvent.getSelectedColor(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .subscribe(colorChooserDialogEvent -> Toast.makeText(MainActivity.this, "Color selected " + colorChooserDialogEvent.getSelectedColor(), Toast.LENGTH_SHORT).show());
     }
 
     private void simpleMaterialList() {
@@ -123,12 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 .negativeText("HEhe")
                 .addItems(items)
                 .build()
-                .subscribe(new Consumer<MaterialSimpleListDialogEvent>() {
-                    @Override
-                    public void accept(MaterialSimpleListDialogEvent materialSimpleListDialogEvent) throws Exception {
-                        //noinspection ConstantConditions
-                        Toast.makeText(MainActivity.this, materialSimpleListDialogEvent.getItem().getContent() + " clicked", Toast.LENGTH_SHORT).show();
-                    }
+                .subscribe(materialSimpleListDialogEvent -> {
+                    //noinspection ConstantConditions
+                    Toast.makeText(MainActivity.this, materialSimpleListDialogEvent.getItem().getContent() + " clicked", Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -138,12 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 .positiveText("Ok")
                 .negativeText("Cance")
                 .build()
-                .subscribe(new Consumer<SingleChoiceListDialogEvent>() {
-                    @Override
-                    public void accept(SingleChoiceListDialogEvent singleChoiceListDialogEvent) throws Exception {
-                        Toast.makeText(MainActivity.this, singleChoiceListDialogEvent.getText(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .subscribe(singleChoiceListDialogEvent -> Toast.makeText(MainActivity.this, singleChoiceListDialogEvent.getText(), Toast.LENGTH_SHORT).show());
     }
 
     private void multiChoice() {
@@ -153,12 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 .neutralText("Netral")
                 .negativeText("Cancel")
                 .build()
-                .subscribe(new Consumer<MultiChoiceListDialogEvent>() {
-                    @Override
-                    public void accept(MultiChoiceListDialogEvent multiChoiceListDialogEvent) throws Exception {
-
-                    }
-                });
+                .subscribe(__ -> {});
     }
 
     private void simpleList() {
@@ -167,21 +117,11 @@ public class MainActivity extends AppCompatActivity {
                 .content("Please :D")
                 .items("Hallo", "Bye", "Joa", "Alles klar", "Noch", "Eins")
                 .build()
-                .subscribe(new Consumer<SimpleListDialogEvent>() {
-                    @Override
-                    public void accept(SimpleListDialogEvent simpleListDialogEvent) throws Exception {
-                        Toast.makeText(MainActivity.this, "Text: "
-                                        + simpleListDialogEvent.getText() + " Position: "
-                                        + simpleListDialogEvent.getPosition() + " Was Long click ? "
-                                        + String.valueOf(simpleListDialogEvent.getEventType() == SimpleListDialogEvent.EventType.LONG_CLICK),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .subscribe(simpleListDialogEvent -> Toast.makeText(MainActivity.this, "Text: "
+                                + simpleListDialogEvent.getText() + " Position: "
+                                + simpleListDialogEvent.getPosition() + " Was Long click ? "
+                                + String.valueOf(simpleListDialogEvent.getEventType() == SimpleListDialogEvent.EventType.LONG_CLICK),
+                        Toast.LENGTH_SHORT).show(), throwable -> Toast.makeText(MainActivity.this, "Cancelled", Toast.LENGTH_SHORT).show());
     }
 
     private void login() {
@@ -191,62 +131,25 @@ public class MainActivity extends AppCompatActivity {
                 .negativeText("Not yet")
                 .iconRes(R.mipmap.ic_launcher)
                 .build()
-                .filter(new Predicate<SingleButtonDialogEvent>() {
-                    @Override
-                    public boolean test(SingleButtonDialogEvent singleButtonDialogEvent) throws Exception {
-                        return singleButtonDialogEvent.isButton(DialogAction.POSITIVE);
-                    }
-                })
-                .flatMap(new Function<SingleButtonDialogEvent, MaybeSource<InputDialogEvent>>() {
-                    @Override
-                    public MaybeSource<InputDialogEvent> apply(SingleButtonDialogEvent __) throws Exception {
-                        return RxMaterialDialogs.inputDialog(MainActivity.this)
-                                .title("Type in your username")
-                                .input("Username..", "")
-                                .positiveText("OK")
-                                .negativeText("Cancel")
-                                .build();
-                    }
-                })
-                .map(new Function<InputDialogEvent, CharSequence>() {
-                    @Override
-                    public CharSequence apply(InputDialogEvent inputDialogEvent) throws Exception {
-                        return inputDialogEvent.getInput();
-                    }
-                })
-                .flatMap(new Function<CharSequence, MaybeSource<Pair<CharSequence, CharSequence>>>() {
-                    @Override
-                    public MaybeSource<Pair<CharSequence, CharSequence>> apply(final CharSequence username) throws Exception {
-                        return RxMaterialDialogs.inputDialog(MainActivity.this)
-                                .title("Type in your password")
-                                .input("Passwordd..", "")
-                                .positiveText("OK")
-                                .negativeText("CANCEL")
-                                .build()
-                                .map(new Function<InputDialogEvent, Pair<CharSequence, CharSequence>>() {
-                                    @Override
-                                    public Pair<CharSequence, CharSequence> apply(InputDialogEvent passwordEvent) throws Exception {
-                                        return new Pair<>(username, passwordEvent.getInput());
-                                    }
-                                });
-                    }
-                })
-                .subscribe(new Consumer<Pair<CharSequence, CharSequence>>() {
-                    @Override
-                    public void accept(Pair<CharSequence, CharSequence> credentials) throws Exception {
-                        Toast.makeText(MainActivity.this, "Successfully logged in Username: " + credentials.first + " Password: " + credentials.second, Toast.LENGTH_SHORT).show();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        throwable.printStackTrace();
-                    }
-                }, new Action() {
-                    @Override
-                    public void run() throws Exception {
-                        Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                .filter(singleButtonDialogEvent -> singleButtonDialogEvent.isButton(DialogAction.POSITIVE))
+                .flatMap(__ -> RxMaterialDialogs.inputDialog(MainActivity.this)
+                        .title("Type in your username")
+                        .input("Username..", "")
+                        .positiveText("OK")
+                        .negativeText("Cancel")
+                        .build())
+                .map(InputDialogEvent::getInput)
+                .flatMap(username -> RxMaterialDialogs.inputDialog(MainActivity.this)
+                        .title("Type in your password")
+                        .input("Passwordd..", "")
+                        .positiveText("OK")
+                        .negativeText("CANCEL")
+                        .build()
+                        .map(passwordEvent -> new Pair<>(username, passwordEvent.getInput())))
+                .subscribe(credentials ->
+                        Toast.makeText(MainActivity.this, "Successfully logged in Username: " + credentials.first + " Password: " + credentials.second, Toast.LENGTH_SHORT).show(),
+                        Throwable::printStackTrace,
+                        () -> Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show());
     }
 
     @Override

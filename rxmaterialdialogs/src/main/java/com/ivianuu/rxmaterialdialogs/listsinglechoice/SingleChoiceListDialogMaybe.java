@@ -17,7 +17,6 @@
 package com.ivianuu.rxmaterialdialogs.listsinglechoice;
 
 import android.support.annotation.NonNull;
-import android.view.View;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -45,22 +44,16 @@ class SingleChoiceListDialogMaybe extends DialogMaybe<SingleChoiceListDialogEven
     @Override
     protected void onPreBuild(@NonNull final MaybeEmitter<SingleChoiceListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
-                .itemsCallbackSingleChoice(selectedIndex, new MaterialDialog.ListCallbackSingleChoice() {
-                    @Override
-                    public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
-                        if (!e.isDisposed()) {
-                            e.onSuccess(new SingleChoiceListDialogEvent(dialog, itemView, which, text));
-                            e.onComplete();
-                        }
-                        return true;
+                .itemsCallbackSingleChoice(selectedIndex, (dialog, itemView, which, text) -> {
+                    if (!e.isDisposed()) {
+                        e.onSuccess(new SingleChoiceListDialogEvent(dialog, itemView, which, text));
+                        e.onComplete();
                     }
+                    return true;
                 })
-                .onAny(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (which != DialogAction.POSITIVE && !e.isDisposed()) {
-                            e.onComplete();
-                        }
+                .onAny((dialog, which) -> {
+                    if (which != DialogAction.POSITIVE && !e.isDisposed()) {
+                        e.onComplete();
                     }
                 });
     }

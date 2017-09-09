@@ -22,7 +22,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.io.File;
@@ -56,12 +55,7 @@ final class FileChooserDialog implements MaterialDialog.ListCallback {
                 .items(getContentsArray())
                 .itemsCallback(this)
                 .onNegative(
-                        new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dialog.dismiss();
-                            }
-                        })
+                        (dialog, which) -> dialog.dismiss())
                 .autoDismiss(false)
                 .negativeText(builder.cancelButton)
                 .build();

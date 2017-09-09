@@ -17,9 +17,7 @@
 package com.ivianuu.rxmaterialdialogs.listsimple;
 
 import android.support.annotation.NonNull;
-import android.view.View;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ivianuu.rxmaterialdialogs.base.DialogMaybe;
 
@@ -42,33 +40,24 @@ class SimpleListDialogMaybe extends DialogMaybe<SimpleListDialogEvent> {
     @Override
     protected void onPreBuild(@NonNull final MaybeEmitter<SimpleListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        if (!e.isDisposed()) {
-                            e.onSuccess(new SimpleListDialogEvent(
-                                    dialog, itemView, position, text, SimpleListDialogEvent.EventType.CLICK));
-                            e.onComplete();
-                        }
+                .itemsCallback((dialog, itemView, position, text) -> {
+                    if (!e.isDisposed()) {
+                        e.onSuccess(new SimpleListDialogEvent(
+                                dialog, itemView, position, text, SimpleListDialogEvent.EventType.CLICK));
+                        e.onComplete();
                     }
                 })
-                .itemsLongCallback(new MaterialDialog.ListLongCallback() {
-                    @Override
-                    public boolean onLongSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        if (!e.isDisposed()) {
-                            e.onSuccess(new SimpleListDialogEvent(
-                                    dialog, itemView, position, text, SimpleListDialogEvent.EventType.LONG_CLICK));
-                            e.onComplete();
-                        }
-                        return true;
+                .itemsLongCallback((dialog, itemView, position, text) -> {
+                    if (!e.isDisposed()) {
+                        e.onSuccess(new SimpleListDialogEvent(
+                                dialog, itemView, position, text, SimpleListDialogEvent.EventType.LONG_CLICK));
+                        e.onComplete();
                     }
+                    return true;
                 })
-                .onAny(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (!e.isDisposed()) {
-                            e.onComplete();
-                        }
+                .onAny((dialog, which) -> {
+                    if (!e.isDisposed()) {
+                        e.onComplete();
                     }
                 });
     }

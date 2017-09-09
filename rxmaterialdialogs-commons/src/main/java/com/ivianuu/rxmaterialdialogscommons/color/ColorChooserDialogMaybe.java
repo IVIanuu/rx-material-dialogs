@@ -18,7 +18,6 @@ package com.ivianuu.rxmaterialdialogscommons.color;
 
 import android.support.annotation.NonNull;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.ivianuu.rxmaterialdialogs.base.DialogDisposable;
 
 import io.reactivex.Maybe;
@@ -43,13 +42,10 @@ final class ColorChooserDialogMaybe implements MaybeOnSubscribe<ColorChooserDial
     @Override
     public void subscribe(final MaybeEmitter<ColorChooserDialogEvent> e) throws Exception {
         // set color callback
-        builder.callback(new ColorChooserDialog.ColorCallback() {
-            @Override
-            public void onColorSelection(@NonNull MaterialDialog dialog, int selectedColor) {
-                if (!e.isDisposed()) {
-                    e.onSuccess(new ColorChooserDialogEvent(dialog, selectedColor));
-                    e.onComplete();
-                }
+        builder.callback((dialog, selectedColor) -> {
+            if (!e.isDisposed()) {
+                e.onSuccess(new ColorChooserDialogEvent(dialog, selectedColor));
+                e.onComplete();
             }
         });
 

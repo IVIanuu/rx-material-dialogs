@@ -54,21 +54,15 @@ class InputDialogMaybe extends DialogMaybe<InputDialogEvent> {
     @Override
     protected void onPreBuild(@NonNull final MaybeEmitter<InputDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
-                .input(hint, prefill, allowEmptyInput, new MaterialDialog.InputCallback() {
-                    @Override
-                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
-                        if (!e.isDisposed()) {
-                            e.onSuccess(new InputDialogEvent(dialog, input));
-                            e.onComplete();
-                        }
+                .input(hint, prefill, allowEmptyInput, (dialog, input) -> {
+                    if (!e.isDisposed()) {
+                        e.onSuccess(new InputDialogEvent(dialog, input));
+                        e.onComplete();
                     }
                 })
-                .onAny(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        if (which != DialogAction.POSITIVE && !e.isDisposed())  {
-                            e.onComplete();
-                        }
+                .onAny((dialog, which) -> {
+                    if (which != DialogAction.POSITIVE && !e.isDisposed())  {
+                        e.onComplete();
                     }
                 });
     }

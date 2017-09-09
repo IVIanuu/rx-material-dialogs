@@ -62,12 +62,9 @@ final class CustomListAdapter<Item extends CustomListItem>
         final Item item = getItem(position);
         item.bind(holder);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // notify clicks
-                callback.onCustomListItemSelected(dialog, holder.getAdapterPosition(), item);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            // notify clicks
+            callback.onCustomListItemSelected(dialog, holder.getAdapterPosition(), item);
         });
     }
 
