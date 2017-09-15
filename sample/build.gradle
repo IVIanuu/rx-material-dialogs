@@ -1,37 +1,30 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
         applicationId "com.ivianuu.rxmaterialdialogs.sample"
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-    // fix android support
-    configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            if (details.requested.group == 'com.android.support') {
-                details.useVersion '26.0.0'
-            }
-        }
     }
 }
 
 dependencies {
     // Rx Material Dialogs
-    compile project(':rxmaterialdialogs')
+    implementation project(':rxmaterialdialogs')
 
     // Rx Material Dialogs Commons
-    compile project(':rxmaterialdialogs-commons')
+    implementation project(':rxmaterialdialogs-commons')
 
     // Android Support
-    implementation 'com.android.support:appcompat-v7:26.0.2'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation rootProject.ext.supportAppCompat
 }
