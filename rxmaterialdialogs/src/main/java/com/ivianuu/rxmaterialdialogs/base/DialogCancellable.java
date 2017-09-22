@@ -21,33 +21,24 @@ import android.support.annotation.RestrictTo;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Cancellable;
 
 /**
  * Dismisses the dialog on dispose
  */
 @RestrictTo(RestrictTo.Scope.LIBRARY)
-public final class DialogDisposable implements Disposable {
+public final class DialogCancellable implements Cancellable {
 
     private final MaterialDialog dialog;
-    private boolean disposed;
 
-    public DialogDisposable(@NonNull MaterialDialog dialog) {
+    public DialogCancellable(@NonNull MaterialDialog dialog) {
         this.dialog = dialog;
     }
 
     @Override
-    public void dispose() {
-        if (!disposed) {
-            disposed = true;
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
+    public void cancel() throws Exception {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
         }
-    }
-
-    @Override
-    public boolean isDisposed() {
-        return disposed;
     }
 }

@@ -18,7 +18,7 @@ package com.ivianuu.rxmaterialdialogscommons.color;
 
 import android.support.annotation.NonNull;
 
-import com.ivianuu.rxmaterialdialogs.base.DialogDisposable;
+import com.ivianuu.rxmaterialdialogs.base.DialogCancellable;
 
 import io.reactivex.Maybe;
 import io.reactivex.MaybeEmitter;
@@ -51,8 +51,8 @@ final class ColorChooserDialogMaybe implements MaybeOnSubscribe<ColorChooserDial
 
         ColorChooserDialog dialog = builder.create();
 
-        // set disposable
-        e.setDisposable(new DialogDisposable(dialog.materialDialog));
+        // set cancellable
+        e.setCancellable(new DialogCancellable(dialog.materialDialog));
 
         // show
         dialog.show();

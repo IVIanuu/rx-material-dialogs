@@ -48,8 +48,8 @@ public abstract class DialogMaybe<T> implements MaybeOnSubscribe<T> {
         // build
         MaterialDialog dialog = dialogBuilder.build();
 
-        // set disposable
-        e.setDisposable(new DialogDisposable(dialog));
+        // set cancellable
+        e.setCancellable(new DialogCancellable(dialog));
 
         // show
         dialog.show();
