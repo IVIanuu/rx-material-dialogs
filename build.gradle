@@ -9,7 +9,7 @@ buildscript {
 
         mavenPlugin = 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 
-        materialDialogsVersion = '0.9.4.5'
+        materialDialogsVersion = '0.9.4.7'
         materialDialogsCore = "com.afollestad.material-dialogs:core:$materialDialogsVersion"
         materialDialogsCommons = "com.afollestad.material-dialogs:commons:$materialDialogsVersion"
 
