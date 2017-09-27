@@ -27,6 +27,8 @@ import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogBuilder;
 
+import static com.ivianuu.preconditions.Preconditions.checkNotNull;
+
 // TODO: 26.07.2017  Add checkbox
 // TODO: 26.07.2017  Add progressbar
 // TODO: 26.07.2017  Add custom view
@@ -44,6 +46,7 @@ public final class RxMaterialDialogs {
      */
     @NonNull
     public static <Item extends CustomListItem> CustomListDialogBuilder<Item> customListDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new CustomListDialogBuilder<>(context);
     }
 
@@ -52,6 +55,7 @@ public final class RxMaterialDialogs {
      */
     @NonNull
     public static InputDialogBuilder inputDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new InputDialogBuilder(context);
     }
 
@@ -60,6 +64,7 @@ public final class RxMaterialDialogs {
      */
     @NonNull
     public static SingleButtonDialogBuilder singleButtonDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new SingleButtonDialogBuilder(context);
     }
 
@@ -68,6 +73,7 @@ public final class RxMaterialDialogs {
      */
     @NonNull
     public static SimpleListDialogBuilder simpleListDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new SimpleListDialogBuilder(context);
     }
 
@@ -76,6 +82,7 @@ public final class RxMaterialDialogs {
      */
     @NonNull
     public static SingleChoiceListDialogBuilder singleChoiceListDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new SingleChoiceListDialogBuilder(context);
     }
 
@@ -84,6 +91,7 @@ public final class RxMaterialDialogs {
      */
     @NonNull
     public static MultiChoiceListDialogBuilder multiChoiceListDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new MultiChoiceListDialogBuilder(context);
     }
 

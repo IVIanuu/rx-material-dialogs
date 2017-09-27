@@ -23,6 +23,8 @@ import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.filechooser.FileChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogBuilder;
 
+import static com.ivianuu.preconditions.Preconditions.checkNotNull;
+
 // TODO: 26.07.2017  Add folder chooser
 
 /**
@@ -39,6 +41,7 @@ public final class RxMaterialDialogsCommons {
      */
     @NonNull
     public static ColorChooserDialogBuilder colorChooserDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new ColorChooserDialogBuilder(context);
     }
 
@@ -47,6 +50,7 @@ public final class RxMaterialDialogsCommons {
      */
     @NonNull
     public static FileChooserDialogBuilder fileChooserDialogBuilder(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new FileChooserDialogBuilder(context);
     }
 
@@ -55,6 +59,7 @@ public final class RxMaterialDialogsCommons {
      */
     @NonNull
     public static MaterialSimpleListDialogBuilder materialSimpleListDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
         return new MaterialSimpleListDialogBuilder(context);
     }
 
