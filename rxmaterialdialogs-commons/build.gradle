@@ -23,10 +23,10 @@ dependencies {
     api rootProject.ext.materialDialogsCommons
 
     // RxMaterialDialogs
-    implementation project(':rxmaterialdialogs')
+    api project(':rxmaterialdialogs')
 
     // Preconditions
-    implementation rootProject.ext.preconditions
+    api rootProject.ext.preconditions
 }
 
 // build a jar with source files

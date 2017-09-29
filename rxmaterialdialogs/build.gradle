@@ -23,10 +23,10 @@ dependencies {
     api rootProject.ext.materialDialogsCore
 
     // RxJava
-    compile rootProject.ext.rxJava
+    api rootProject.ext.rxJava
 
     // Preconditions
-    implementation rootProject.ext.preconditions
+    api rootProject.ext.preconditions
 }
 
 // build a jar with source files
