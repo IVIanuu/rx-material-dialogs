@@ -27,7 +27,7 @@ import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.listsinglechoice.SingleChoiceListDialogBuilder;
 import com.ivianuu.rxmaterialdialogs.singlebutton.SingleButtonDialogBuilder;
 
-import static com.ivianuu.preconditions.Preconditions.checkNotNull;
+import static com.ivianuu.rxmaterialdialogs.Preconditions.checkNotNull;
 
 // TODO: 26.07.2017  Add checkbox
 // TODO: 26.07.2017  Add progressbar

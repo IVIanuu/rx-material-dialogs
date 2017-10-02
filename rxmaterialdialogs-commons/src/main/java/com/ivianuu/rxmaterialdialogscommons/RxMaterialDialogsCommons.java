@@ -23,7 +23,7 @@ import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.filechooser.FileChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogBuilder;
 
-import static com.ivianuu.preconditions.Preconditions.checkNotNull;
+import static com.ivianuu.rxmaterialdialogs.Preconditions.checkNotNull;
 
 // TODO: 26.07.2017  Add folder chooser
 
