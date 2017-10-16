@@ -33,7 +33,7 @@ import io.reactivex.Maybe;
 /**
  * Custom list dialog builder
  */
-public class CustomListDialogBuilder<Item extends CustomListItem> extends BaseDialogBuilder<CustomListDialogBuilder> {
+public class CustomListDialogBuilder<Item extends CustomListItem> extends BaseDialogBuilder<CustomListDialogBuilder<Item>> {
 
     private final List<Item> items = new ArrayList<>();
     private RecyclerView.LayoutManager layoutManager;
