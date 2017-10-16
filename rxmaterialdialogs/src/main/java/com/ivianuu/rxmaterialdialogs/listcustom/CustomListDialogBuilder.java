@@ -44,22 +44,22 @@ public class CustomListDialogBuilder<Item extends CustomListItem> extends BaseDi
         setThisBuilder(this);
     }
 
-    public CustomListDialogBuilder layoutManager(@NonNull RecyclerView.LayoutManager layoutManager) {
+    public CustomListDialogBuilder<Item> layoutManager(@NonNull RecyclerView.LayoutManager layoutManager) {
         this.layoutManager = layoutManager;
         return this;
     }
 
-    public CustomListDialogBuilder addItem(@NonNull Item item) {
+    public CustomListDialogBuilder<Item> addItem(@NonNull Item item) {
         this.items.add(item);
         return this;
     }
 
-    public CustomListDialogBuilder addItems(@NonNull Item... items) {
+    public CustomListDialogBuilder<Item> addItems(@NonNull Item... items) {
         this.items.addAll(Arrays.asList(items));
         return this;
     }
 
-    public CustomListDialogBuilder addItems(@NonNull List<Item> items) {
+    public CustomListDialogBuilder<Item> addItems(@NonNull List<Item> items) {
         this.items.addAll(items);
         return this;
     }
