@@ -43,10 +43,8 @@ final class FileChooserDialogMaybe implements MaybeOnSubscribe<FileChooserDialog
     public void subscribe(final MaybeEmitter<FileChooserDialogEvent> e) throws Exception {
         // set file callback
         builder.callback((dialog, file) -> {
-            if (!e.isDisposed()) {
-                e.onSuccess(new FileChooserDialogEvent(dialog.materialDialog, file));
-                e.onComplete();
-            }
+            e.onSuccess(new FileChooserDialogEvent(dialog.materialDialog, file));
+            e.onComplete();
         });
 
         FileChooserDialog dialog = builder.create();

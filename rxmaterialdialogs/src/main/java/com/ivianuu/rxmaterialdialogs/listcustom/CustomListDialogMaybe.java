@@ -54,19 +54,15 @@ class CustomListDialogMaybe<Item extends CustomListItem> extends DialogMaybe<Cus
                               @NonNull MaterialDialog.Builder dialogBuilder) {
         // create adapter
         CustomListAdapter<Item> adapter = new CustomListAdapter<>(items, (dialog, index, item) -> {
-            if (!e.isDisposed()) {
-                e.onSuccess(new CustomListDialogEvent<>(dialog, index, item));
-                e.onComplete();
-            }
+            e.onSuccess(new CustomListDialogEvent<>(dialog, index, item));
+            e.onComplete();
         });
 
         // set adapter
         dialogBuilder
                 .adapter(adapter, layoutManager)
                 .onAny((__, ___) -> {
-                    if (!e.isDisposed()) {
-                        e.onComplete();
-                    }
+                    e.onComplete();
                 });
     }
 }

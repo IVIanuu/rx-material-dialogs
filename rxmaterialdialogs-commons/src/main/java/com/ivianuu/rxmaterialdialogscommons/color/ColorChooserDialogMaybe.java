@@ -43,10 +43,8 @@ final class ColorChooserDialogMaybe implements MaybeOnSubscribe<ColorChooserDial
     public void subscribe(final MaybeEmitter<ColorChooserDialogEvent> e) throws Exception {
         // set color callback
         builder.callback((dialog, selectedColor) -> {
-            if (!e.isDisposed()) {
-                e.onSuccess(new ColorChooserDialogEvent(dialog, selectedColor));
-                e.onComplete();
-            }
+            e.onSuccess(new ColorChooserDialogEvent(dialog, selectedColor));
+            e.onComplete();
         });
 
         ColorChooserDialog dialog = builder.create();

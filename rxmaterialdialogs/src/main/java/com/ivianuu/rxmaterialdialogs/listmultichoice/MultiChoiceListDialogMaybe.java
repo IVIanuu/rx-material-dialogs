@@ -46,14 +46,12 @@ class MultiChoiceListDialogMaybe extends DialogMaybe<MultiChoiceListDialogEvent>
     protected void onPreBuild(@NonNull final MaybeEmitter<MultiChoiceListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
                 .itemsCallbackMultiChoice(selectedIndices, (dialog, which, text) -> {
-                    if (!e.isDisposed()) {
-                        e.onSuccess(new MultiChoiceListDialogEvent(dialog, which, text));
-                        e.onComplete();
-                    }
+                    e.onSuccess(new MultiChoiceListDialogEvent(dialog, which, text));
+                    e.onComplete();
                     return true;
                 })
                 .onAny((dialog, which) -> {
-                    if (which != DialogAction.POSITIVE && !e.isDisposed()) {
+                    if (which != DialogAction.POSITIVE) {
                         e.onComplete();
                     }
                 });

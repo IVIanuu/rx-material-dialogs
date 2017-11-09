@@ -32,7 +32,7 @@ import io.reactivex.MaybeEmitter;
 /**
  * Material simple list dialog observable
  */
-class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialogEvent> {
+final class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialogEvent> {
 
     private final List<MaterialSimpleListItem> items;
     private final RecyclerView.LayoutManager layoutManager;
@@ -55,10 +55,8 @@ class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialog
     protected void onPreBuild(@NonNull final MaybeEmitter<MaterialSimpleListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         // create adapter
         MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter((dialog, index, item) -> {
-            if (!e.isDisposed()) {
-                e.onSuccess(new MaterialSimpleListDialogEvent(dialog, index, item));
-                e.onComplete();
-            }
+            e.onSuccess(new MaterialSimpleListDialogEvent(dialog, index, item));
+            e.onComplete();
         });
 
         // add items
@@ -70,9 +68,7 @@ class MaterialSimpleListDialogMaybe extends DialogMaybe<MaterialSimpleListDialog
         dialogBuilder
                 .adapter(adapter, layoutManager)
                 .onAny((dialog, which) -> {
-                    if (!e.isDisposed()) {
-                        e.onComplete();
-                    }
+                    e.onComplete();
                 });
     }
 }

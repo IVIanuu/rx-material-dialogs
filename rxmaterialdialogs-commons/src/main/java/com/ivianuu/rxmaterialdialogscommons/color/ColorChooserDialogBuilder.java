@@ -35,7 +35,7 @@ import io.reactivex.Maybe;
 /**
  * Color chooser dialog builder
  */
-public class ColorChooserDialogBuilder {
+public final class ColorChooserDialogBuilder {
 
     ColorChooserDialog.ColorCallback colorCallback;
 

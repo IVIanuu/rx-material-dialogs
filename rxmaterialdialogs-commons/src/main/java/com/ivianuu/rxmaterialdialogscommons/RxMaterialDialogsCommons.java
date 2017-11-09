@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.filechooser.FileChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogBuilder;
+import com.ivianuu.rxmaterialdialogscommons.seekbar.SeekbarDialogBuilder;
 
 import static com.ivianuu.rxmaterialdialogs.Preconditions.checkNotNull;
 
@@ -61,6 +62,15 @@ public final class RxMaterialDialogsCommons {
     public static MaterialSimpleListDialogBuilder materialSimpleListDialog(@NonNull Context context) {
         checkNotNull(context, "context == null");
         return new MaterialSimpleListDialogBuilder(context);
+    }
+
+    /**
+     * Returns a seek bar dialog
+     */
+    @NonNull
+    public static SeekbarDialogBuilder seekBarDialog(@NonNull Context context) {
+        checkNotNull(context, "context == null");
+        return new SeekbarDialogBuilder(context);
     }
 
 }

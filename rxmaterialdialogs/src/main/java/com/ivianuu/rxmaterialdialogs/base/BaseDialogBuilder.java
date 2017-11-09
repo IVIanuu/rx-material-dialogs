@@ -389,7 +389,6 @@ public class BaseDialogBuilder<T extends BaseDialogBuilder> {
     }
 
     public T autoDismiss(boolean dismiss) {
-        // TODO: 25.07.2017 maybe remove this
         wrappedBuilder.autoDismiss(dismiss);
         return thisBuilder;
     }

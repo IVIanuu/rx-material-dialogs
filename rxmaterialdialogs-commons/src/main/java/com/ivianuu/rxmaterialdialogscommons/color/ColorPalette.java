@@ -19,9 +19,9 @@ package com.ivianuu.rxmaterialdialogscommons.color;
 import android.graphics.Color;
 
 /**
- * @author Manuel Wrage (IVIanuu)
+ * Color palette
  */
-class ColorPalette {
+final class ColorPalette {
 
     static final int[] PRIMARY_COLORS =
             new int[] {

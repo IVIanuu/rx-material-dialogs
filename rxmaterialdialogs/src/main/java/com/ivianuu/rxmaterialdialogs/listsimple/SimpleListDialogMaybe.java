@@ -41,24 +41,18 @@ class SimpleListDialogMaybe extends DialogMaybe<SimpleListDialogEvent> {
     protected void onPreBuild(@NonNull final MaybeEmitter<SimpleListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
                 .itemsCallback((dialog, itemView, position, text) -> {
-                    if (!e.isDisposed()) {
-                        e.onSuccess(new SimpleListDialogEvent(
-                                dialog, itemView, position, text, SimpleListDialogEvent.EventType.CLICK));
-                        e.onComplete();
-                    }
+                    e.onSuccess(new SimpleListDialogEvent(
+                            dialog, itemView, position, text, SimpleListDialogEvent.EventType.CLICK));
+                    e.onComplete();
                 })
                 .itemsLongCallback((dialog, itemView, position, text) -> {
-                    if (!e.isDisposed()) {
-                        e.onSuccess(new SimpleListDialogEvent(
-                                dialog, itemView, position, text, SimpleListDialogEvent.EventType.LONG_CLICK));
-                        e.onComplete();
-                    }
+                    e.onSuccess(new SimpleListDialogEvent(
+                            dialog, itemView, position, text, SimpleListDialogEvent.EventType.LONG_CLICK));
+                    e.onComplete();
                     return true;
                 })
                 .onAny((dialog, which) -> {
-                    if (!e.isDisposed()) {
-                        e.onComplete();
-                    }
+                    e.onComplete();
                 });
     }
 }

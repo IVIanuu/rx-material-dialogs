@@ -45,14 +45,12 @@ class SingleChoiceListDialogMaybe extends DialogMaybe<SingleChoiceListDialogEven
     protected void onPreBuild(@NonNull final MaybeEmitter<SingleChoiceListDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
                 .itemsCallbackSingleChoice(selectedIndex, (dialog, itemView, which, text) -> {
-                    if (!e.isDisposed()) {
-                        e.onSuccess(new SingleChoiceListDialogEvent(dialog, itemView, which, text));
-                        e.onComplete();
-                    }
+                    e.onSuccess(new SingleChoiceListDialogEvent(dialog, itemView, which, text));
+                    e.onComplete();
                     return true;
                 })
                 .onAny((dialog, which) -> {
-                    if (which != DialogAction.POSITIVE && !e.isDisposed()) {
+                    if (which != DialogAction.POSITIVE) {
                         e.onComplete();
                     }
                 });

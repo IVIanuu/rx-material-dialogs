@@ -44,10 +44,8 @@ class SingleButtonDialogMaybe extends DialogMaybe<SingleButtonDialogEvent> {
     protected void onPreBuild(@NonNull final MaybeEmitter<SingleButtonDialogEvent> e, @NonNull MaterialDialog.Builder dialogBuilder) {
         dialogBuilder
                 .onAny((dialog, which) -> {
-                    if (!e.isDisposed()) {
-                        e.onSuccess(new SingleButtonDialogEvent(dialog, which));
-                        e.onComplete();
-                    }
+                    e.onSuccess(new SingleButtonDialogEvent(dialog, which));
+                    e.onComplete();
                 });
     }
 
