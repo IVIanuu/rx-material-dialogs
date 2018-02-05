@@ -1,22 +1,21 @@
 buildscript {
 
     ext {
-        androidPlugin = 'com.android.tools.build:gradle:3.0.0'
+        androidPlugin = 'com.android.tools.build:gradle:3.0.1'
         minSdkVersion = 14
         compileSdkVersion = 27
         targetSdkVersion = 27
-        buildToolsVersion = '26.0.2'
 
-        mavenPlugin = 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        mavenPlugin = 'com.github.dcendents:android-maven-gradle-plugin:2.0'
 
-        materialDialogsVersion = '0.9.4.7'
+        materialDialogsVersion = '0.9.6.0'
         materialDialogsCore = "com.afollestad.material-dialogs:core:$materialDialogsVersion"
         materialDialogsCommons = "com.afollestad.material-dialogs:commons:$materialDialogsVersion"
 
-        supportVersion = '27.0.1'
+        supportVersion = '27.0.2'
         supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
 
-        rxJava = 'io.reactivex.rxjava2:rxjava:2.1.6'
+        rxJava = 'io.reactivex.rxjava2:rxjava:2.1.8'
     }
     
     repositories {

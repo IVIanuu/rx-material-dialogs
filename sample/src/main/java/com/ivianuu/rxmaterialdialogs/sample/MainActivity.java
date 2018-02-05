@@ -15,13 +15,11 @@ import com.ivianuu.rxmaterialdialogs.listcustom.CustomListDialogEvent;
 import com.ivianuu.rxmaterialdialogs.listcustom.CustomModelListItem;
 import com.ivianuu.rxmaterialdialogs.listsimple.SimpleListDialogEvent;
 import com.ivianuu.rxmaterialdialogscommons.RxMaterialDialogsCommons;
-import com.ivianuu.rxmaterialdialogscommons.seekbar.SeekBarDialogEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,26 +29,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        disposable = RxMaterialDialogsCommons.seekBarDialog(this)
-                .title("Title")
-                .positiveText("OK")
-                .minProgress(0)
-                .maxProgress(100)
-                .currentProgress(59)
-                .build()
-                .subscribe(new Consumer<SeekBarDialogEvent>() {
-                    @Override
-                    public void accept(SeekBarDialogEvent seekBarDialogEvent) throws Exception {
-                        Toast.makeText(MainActivity.this, "Selected " + seekBarDialogEvent.getProgress(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void fileChooserDialog() {
-        disposable = RxMaterialDialogsCommons.fileChooserDialogBuilder(this)
-                .build()
-                .subscribe(fileChooserDialogEvent -> Toast.makeText(MainActivity.this, "file selected " + fileChooserDialogEvent.getSelectedFile().getAbsolutePath(), Toast.LENGTH_SHORT).show());
     }
 
     private void customListDialog() {

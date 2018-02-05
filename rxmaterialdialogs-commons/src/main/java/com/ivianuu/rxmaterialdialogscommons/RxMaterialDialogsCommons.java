@@ -20,13 +20,9 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ivianuu.rxmaterialdialogscommons.color.ColorChooserDialogBuilder;
-import com.ivianuu.rxmaterialdialogscommons.filechooser.FileChooserDialogBuilder;
 import com.ivianuu.rxmaterialdialogscommons.listmaterialsimple.MaterialSimpleListDialogBuilder;
-import com.ivianuu.rxmaterialdialogscommons.seekbar.SeekbarDialogBuilder;
 
 import static com.ivianuu.rxmaterialdialogs.Preconditions.checkNotNull;
-
-// TODO: 26.07.2017  Add folder chooser
 
 /**
  * Material dialog commons
@@ -47,30 +43,12 @@ public final class RxMaterialDialogsCommons {
     }
 
     /**
-     * Returns a new file chooser dialog
-     */
-    @NonNull
-    public static FileChooserDialogBuilder fileChooserDialogBuilder(@NonNull Context context) {
-        checkNotNull(context, "context == null");
-        return new FileChooserDialogBuilder(context);
-    }
-
-    /**
      * Returns a new material simple list dialog
      */
     @NonNull
     public static MaterialSimpleListDialogBuilder materialSimpleListDialog(@NonNull Context context) {
         checkNotNull(context, "context == null");
         return new MaterialSimpleListDialogBuilder(context);
-    }
-
-    /**
-     * Returns a seek bar dialog
-     */
-    @NonNull
-    public static SeekbarDialogBuilder seekBarDialog(@NonNull Context context) {
-        checkNotNull(context, "context == null");
-        return new SeekbarDialogBuilder(context);
     }
 
 }
